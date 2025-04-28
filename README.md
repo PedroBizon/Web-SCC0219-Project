@@ -44,6 +44,6 @@ Aplicação online para uma loja de livros com:
 
 ## Projeto no Figma
 
-[Link para o Figma]
+[Link para o Figma](https://www.figma.com/design/KCJOQ1HRQr8NRWqZ0fCD8N/Trabalho-1-Web?node-id=0-1&p=f&t=Ws5Fnwljwq0gYktq-0)
 
 ---
