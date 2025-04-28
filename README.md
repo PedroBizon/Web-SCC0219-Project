@@ -38,7 +38,7 @@ Aplicação online para uma loja de livros com:
 
 ## Diagrama de Navegação
 
-[Diagrama de Navegação]
+![Diagrama de Navegação](Mockups/DiagramaPaginas.jpg)
 
 ---
 
