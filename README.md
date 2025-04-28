@@ -1,7 +1,7 @@
 # Projeto de Web - Loja de Livros (Bibliotech)
 
 Pedro Bizon Dania - 11812667  
-Arthur Rios Dias - 13731751  
+Arthur Domingues Rios - 13731751  
 
 ## Requisitos do Sistema
 
