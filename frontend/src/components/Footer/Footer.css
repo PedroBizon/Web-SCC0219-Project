@@ -1,0 +1,62 @@
+.Footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #2E86AB;
+  color: white;
+  padding: 0% 5%;
+  font-family: sans-serif;
+  flex-wrap: wrap;
+  gap: 2%;
+  width: 100vw; /* Full width of viewport */
+  box-sizing: border-box;
+}
+
+.FooterSection {
+  flex: 1;
+  min-width: 30%;
+  margin: 2% 0;
+}
+
+.LogoSection {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.FooterLogo {
+  width: 2em;
+  height: 2em;
+}
+
+.FooterTitle {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.FooterSection h4 {
+  font-size: 1em;
+  margin-bottom: 0.5em;
+}
+
+.FooterSection p {
+  margin: 0.3em 0;
+  font-size: 0.9em;
+}
+
+/* ✅ Responsive for mobile */
+@media (max-width: 768px) {
+  .Footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .FooterSection {
+    min-width: 90%;
+  }
+
+  .LogoSection {
+    justify-content: center;
+  }
+}
