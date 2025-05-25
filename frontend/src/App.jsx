@@ -7,17 +7,14 @@ import Navbar from './components/Navbar/Navbar'
 import Botao from './components/Botao/Botao'
 import SearchBar from './components/SearchBar/SearchBar'
 import InputField from './components/InputField/InputField'
+import Principal from './pages/Principal'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <Navbar></Navbar>
-      <SearchBar></SearchBar>
-      <Botao></Botao>
-      <InputField label="Nome"/>
-      <Footer></Footer>
+      <Principal></Principal>
     </>
   )
 }
