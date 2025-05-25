@@ -10,11 +10,13 @@ import InputField from './components/InputField/InputField'
 import Principal from './pages/Principal'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <Principal></Principal>
+      <Navbar></Navbar>
+      <SearchBar></SearchBar>
+      <InputField></InputField>
+      <Footer></Footer>
     </>
   )
 }
