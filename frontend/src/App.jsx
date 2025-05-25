@@ -6,6 +6,7 @@ import Footer from './components/Footer/Footer'
 import Navbar from './components/Navbar/Navbar'
 import Botao from './components/Botao/Botao'
 import SearchBar from './components/SearchBar/SearchBar'
+import InputField from './components/InputField/InputField'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,6 +16,7 @@ function App() {
       <Navbar></Navbar>
       <SearchBar></SearchBar>
       <Botao></Botao>
+      <InputField label="Nome"/>
       <Footer></Footer>
     </>
   )
