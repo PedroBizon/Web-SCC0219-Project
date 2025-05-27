@@ -15,9 +15,6 @@ function App() {
   return (
     <>
       <Navbar></Navbar>
-      <SearchBar></SearchBar>
-      <InputField></InputField>
-      <Footer></Footer>
     </>
   )
 }
