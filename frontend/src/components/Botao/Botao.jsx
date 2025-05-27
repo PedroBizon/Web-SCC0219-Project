@@ -6,7 +6,7 @@ const GerarBotao = ({ onClick, label = "Botão", cor}) => {
     return (
       <button
         onClick={onClick}
-        className="BotaoAzul"
+        className="BotaoAzul rounded-md"
       >
         {label}
       </button>

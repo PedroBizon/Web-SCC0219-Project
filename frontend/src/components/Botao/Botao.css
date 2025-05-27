@@ -1,9 +1,12 @@
 .BotaoAzul {
+    padding: 10px;
     background-color: #2E86AB;
     color: white;
+    
 }
 
 .BotaoVermelho {
+    padding: 10px;
     background-color: #AB2E2E;
     color: white;
 }
