@@ -7,17 +7,28 @@ import Navbar from './components/Navbar/Navbar'
 import Botao from './components/Botao/Botao'
 import SearchBar from './components/SearchBar/SearchBar'
 import InputField from './components/InputField/InputField'
+import CartItem from './components/CartItem/CartItem'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <Navbar></Navbar>
-      <SearchBar></SearchBar>
-      <Botao></Botao>
-      <InputField label="Nome"/>
-      <Footer></Footer>
+      <Navbar/>
+      <SearchBar/>
+      <Botao/>
+      <InputField  
+      label="Nome"/>
+      <Footer/>
+      <CartItem 
+      book={{
+      id: 1,
+      title: "Livro exemplo 1",
+      author: "Autor exemplo 1",
+      price: 49.99
+      }} 
+      onRemove={(id) => console.log('Remover livro', id)} 
+      />
     </>
   )
 }
