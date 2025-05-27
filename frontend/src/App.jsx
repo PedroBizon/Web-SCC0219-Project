@@ -14,7 +14,6 @@ function App() {
 
   return (
     <>
-      <h1 className='text-center text-gray-600'>Olá mundo caraio</h1>
       <Navbar></Navbar>
       <SearchBar></SearchBar>
       <InputField></InputField>
