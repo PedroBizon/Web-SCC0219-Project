@@ -8,12 +8,13 @@ import Botao from './components/Botao/Botao'
 import SearchBar from './components/SearchBar/SearchBar'
 import InputField from './components/InputField/InputField'
 import CartItem from './components/CartItem/CartItem'
-import Principal from './pages/Principal'
+// import Principal from './pages/Principal'
 
 function App() {
 
   return (
     <>
+      <h1 className='text-center text-gray-600'>Olá mundo caraio</h1>
       <Navbar></Navbar>
       <SearchBar></SearchBar>
       <InputField></InputField>
