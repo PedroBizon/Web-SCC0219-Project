@@ -6,8 +6,8 @@ export default function InputField({
   value,
   onChange,
   placeholder,
-  width = '100%',    // take full width of parent
-  height = '48px',    // match your design
+  width = '100%',   
+  height = '48px',    
 }) {
   return (
     <div style={{ width }} className="flex flex-col mb-4">
