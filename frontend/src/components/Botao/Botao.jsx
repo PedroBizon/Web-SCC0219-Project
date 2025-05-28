@@ -6,7 +6,7 @@ const GerarBotao = ({ onClick, label = "Botão", cor}) => {
     return (
       <button
         onClick={onClick}
-        className="BotaoAzul rounded-md"
+        className=" flex BotaoAzul rounded-md w-1/2 justify-center items-center"
       >
         {label}
       </button>
