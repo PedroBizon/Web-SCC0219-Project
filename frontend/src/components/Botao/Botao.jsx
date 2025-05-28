@@ -6,7 +6,7 @@ function GerarBotao({ cor , label, onClick, className }) {
   return (
     <button
       onClick={onClick}
-      className={`${colors[cor]} text-white font-medium rounded-lg justify-center ${className}`}
+      className={`${colors[cor]} text-white font-medium rounded-lg justify-center ${className} px-4`}
     >
       {label}
     </button>

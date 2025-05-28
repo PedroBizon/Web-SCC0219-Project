@@ -24,7 +24,7 @@ function SearchBar({ onSearch }) {
       />
       <Botao
         label="Buscar"
-        cor={true}
+        cor={0}
       />
     </div>
   );

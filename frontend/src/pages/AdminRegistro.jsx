@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar/Navbar";
 function AdminRegistro() {
     return(
     <>
-     <Navbar></Navbar>
+     <Navbar logado></Navbar>
     </>
     )
 }

@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar/Navbar";
 function PrincipalAdmin() {
     return(
     <>
-     <Navbar></Navbar>
+     <Navbar logado={true}></Navbar>
     </>
     )
 }

@@ -39,12 +39,13 @@ export default function Login({ setLogado }) {
 
           {/* ← CENTERED BUTTON HERE */}
           <div className="flex justify-center">
-            <GerarBotao
+            <Link to='/' ><GerarBotao
               cor={0}
               label="Entrar"
               onClick={handleLogin}
               className="px-16 py-3"
-            />
+            /></Link>
+            
           </div>
 
           <div className="text-center text-sm text-gray-600">

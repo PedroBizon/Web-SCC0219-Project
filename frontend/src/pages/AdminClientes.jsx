@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar/Navbar";
 function AdminCliente() {
     return(
     <>
-     <Navbar></Navbar>
+     <Navbar logado></Navbar>
     </>
     )
 }
