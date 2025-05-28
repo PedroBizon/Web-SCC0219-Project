@@ -1,53 +1,61 @@
-import Navbar from "../components/Navbar/Navbar";
-import InputField from "../components/InputField/InputField";
-import GerarBotao from "../components/Botao/Botao";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
-/*         <Navbar></Navbar>
-        <br></br> <br></br> <br></br>
-        <div style={
-            { backgroundColor: 'white',
-            height: '520px', 
-            width: '400px',
-            textAlign: 'center', 
-            margin: 'auto',
-            borderRadius: '10px', 
-            padding: '20px',
-            boxShadow: '0 4px 8px rgba(0,0,0,0.1)' }}>
-            <br></br>
-            <h1 style={{textAlign: 'left', marginLeft: '10px', fontWeight: 'bold', fontSize: '25px', color: '#2E86AB'}}>Bem-vindo de volta!</h1>
-            <br></br>
-            <p style={{textAlign: 'left', marginLeft: '10px'}}>Preencha os campos abaixo para se cadastrar na loja</p>
-            
-            <InputField width={340} height={34} label={'E-mail'}></InputField>
-            <InputField width={340} label={'Senha'} height={34}></InputField>
-                
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-                <GerarBotao cor={1} label='Entrar'></GerarBotao>
-            </div>
-            <br></br>
-            <p style={{fontWeight: 'bold'}}>Ainda não tem uma conta?</p>
-            <br></br>
-            <p style={{fontWeight: 'bold', color: '#2E86AB'}}>Cadastre-se</p>
+import Navbar      from '../components/Navbar/Navbar';
+import InputField  from '../components/InputField/InputField';
+import GerarBotao  from '../components/Botao/Botao';
 
-        </div>
-    </> */
+export default function Login({ setLogado }) {
+  const navigate = useNavigate();
 
-function Login() {
-    return(
+  const handleLogin = () => {
+    // your real auth logic would go here…
+    setLogado(true);
+    navigate('/');           // redirect to home
+  };
+
+  return (
     <>
-        <Navbar></Navbar>
-        <br></br> <br></br> <br></br>
-        <div className="bg-branco flex flex-col  w-1/2 justify-evenly items-start p-10">
-            <h1>Bem vindo de volta!</h1>
-            <br></br>
-            <p>Preencha os campos abaixo para se cadastrar na loja</p>
-            <InputField height={30} label={'E-mail'}></InputField>
-            <InputField label={'Senha'} height={30}></InputField>
+      <Navbar logado={false} />
 
-            <GerarBotao cor={1} label='Entrar'></GerarBotao>
+      <div className="bg-gray-100 min-h-[100vh] pt-16 flex items-center justify-center">
+        <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-8 space-y-6">
+          <h1 className="text-2xl font-bold text-[#2E86AB] text-center">
+            Bem-vindo de volta!
+          </h1>
+
+          <p className="text-center text-gray-700">
+            Preencha os campos abaixo para se cadastrar na loja.
+          </p>
+
+          <InputField label="E-mail" type="email" />
+          <InputField label="Senha" type="password" />
+
+          <div className="text-center">
+            <Link to="/esqueci-senha" className="text-[#2E86AB] font-medium hover:underline">
+              Esqueci a senha
+            </Link>
+          </div>
+
+          {/* ← CENTERED BUTTON HERE */}
+          <div className="flex justify-center">
+            <GerarBotao
+              cor={0}
+              label="Entrar"
+              onClick={handleLogin}
+              className="px-16 py-3"
+            />
+          </div>
+
+          <div className="text-center text-sm text-gray-600">
+            Ainda não tem uma conta?{' '}
+            <Link to="/cadastro" className="text-[#2E86AB] font-medium hover:underline">
+              Cadastre-se
+            </Link>
+          </div>
         </div>
+      </div>
     </>
-    )
+  );
 }
 
-export default Login;

@@ -21,7 +21,8 @@ import AdicionarProduto from './pages/AdicionarProduto';
 // import Principal from './pages/Principal'
 
 function App() {
-
+  const [logado, setLogado] = useState(false);
+  
   return (
     <>
       <Router>
@@ -37,7 +38,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/admin" element={<PrincipalAdmin />} />
           <Route path="/" element={<PrincipalUsuaio />} />
-          <Route path="/vendas" element={<VendasEstoque />} />
+          <Route path="/estoque-vendas" element={<VendasEstoque />} />
           <Route path="/visualizar" element={<VisualizarProduto />} />
         </Routes>
       </Router>

@@ -1,27 +1,16 @@
 import React from 'react';
 import './Botao.css'
 
-const GerarBotao = ({ onClick, label = "Botão", cor}) => {
-  if (cor) {
-    return (
-      <button
-        onClick={onClick}
-        className=" flex BotaoAzul rounded-md w-1/2 justify-center items-center"
-      >
-        {label}
-      </button>
-    );
-  } else {
-    return (
-      <button
-        onClick={onClick}
-        className="BotaoVermelho"
-      >
-        {label}
-      </button>
-    );
-  }
-  
+function GerarBotao({ cor , label, onClick, className }) {
+  const colors = ['bg-azul','bg-green-500','bg-red-500'];
+  return (
+    <button
+      onClick={onClick}
+      className={`${colors[cor]} text-white font-medium rounded-lg justify-center ${className}`}
+    >
+      {label}
+    </button>
+  );
 }
   
 
