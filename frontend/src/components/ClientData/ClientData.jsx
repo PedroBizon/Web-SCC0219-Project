@@ -10,7 +10,11 @@ const ClientData = ({ id, nome, telefone, email, onDelete }) => {
       <div className="data-col telefone">{telefone}</div>
       <div className="data-col email">{email}</div>
       <div className="data-col acao">
-        <GerarBotao label="Deletar" onClick={onDelete} cor={false} />
+              <GerarBotao
+              cor={2}
+              label="Deletar"
+              className="px-2 py-0"
+            />
       </div>
     </div>
   )
