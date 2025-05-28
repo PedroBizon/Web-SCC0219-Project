@@ -1,12 +1,13 @@
 .relatorio-header {
   display: grid;
   width: 800px;
-  grid-template-columns: 50px 200px 150px 200px 100px;
+  grid-template-columns: 150px 150px 150px 150px 150px;
   align-items: center;
   background-color: #2E86AB;
   color: white;
   font-weight: bold;
   padding: 10px;
+  margin: 0 auto;
 }
 
 .header-col {

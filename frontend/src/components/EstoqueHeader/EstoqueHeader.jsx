@@ -3,7 +3,7 @@ import './EstoqueHeader.css';
 
 const EstoqueHeader = () => {
   return (
-    <div className="client-header">
+    <div className="estoque-header">
       <div className="header-col id">ID</div>
       <div className="header-col titulo">Título</div>
       <div className="header-col quantidade">Quantidade</div>
