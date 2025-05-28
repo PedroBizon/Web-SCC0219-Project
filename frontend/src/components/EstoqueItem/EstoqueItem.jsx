@@ -10,7 +10,11 @@ const EstoqueItem = ({ id, titulo, quantidade, preco, onDelete }) => {
       <div className="data-col quantidade">{quantidade}</div>
       <div className="data-col preco">{preco}</div>
       <div className="data-col acao">
-        <GerarBotao label="Editar" onClick={onDelete} cor={true} />
+            <GerarBotao
+              cor={0}
+              label="Editar"
+              className="px-0 py-0"
+            />
       </div>
     </div>
   )

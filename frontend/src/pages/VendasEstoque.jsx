@@ -14,8 +14,8 @@ function VendasEstoque() {
         <br></br><br></br><br></br><br></br>
 
         <div style={
-        {width: '1060px', 
-        height: '730px', 
+        {width: '80%', 
+        height: 'auto', 
         backgroundColor: 'white',
         textAlign: 'center', 
         margin: 'auto',
@@ -58,12 +58,14 @@ function VendasEstoque() {
             titulo={'Dom Casmurro'}
             quantidade={25}
             preco={'R$ 29,90'}
+            onDelete={() => console.log('Editar produto 001')}
             ></EstoqueItem>
             <EstoqueItem
             id={'002'}
             titulo={'1984'}
             quantidade={10}
             preco={'R$ 34,90'}
+            onDelete={() => console.log('Editar produto 002')}
             ></EstoqueItem>
 
             </div>
