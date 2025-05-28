@@ -1,12 +1,18 @@
 .client-data {
   display: grid;
-  grid-template-columns: 1fr 3fr 3fr 3fr 1fr;
+  width: 800px;
+  grid-template-columns: 50px 200px 150px 200px 100px;
   align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(220, 220, 220, 0.5);
-  color: #666;
+  color: gray;
+  padding: 10px;
+  border-bottom: 1px solid rgba(200, 200, 200, 0.4);
 }
 
-.client-data span {
-  font-size: 0.9rem;
+.data-col {
+  padding: 5px 10px;
+}
+
+.data-col.acao {
+  display: flex;
+  justify-content: flex-start;
 }
