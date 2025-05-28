@@ -11,6 +11,8 @@ function VendasEstoque() {
     <>
         <Navbar></Navbar>
 
+        <br></br><br></br><br></br><br></br>
+
         <div style={
         {width: '1060px', 
         height: '730px', 
@@ -21,9 +23,12 @@ function VendasEstoque() {
         padding: '20px',
         boxShadow: '0 4px 8px rgba(0,0,0,0.1)' }}>
 
-            <h1 style={{textAlign: 'left', marginLeft: '10px', fontWeight: 'bold', fontSize: '25px', color: '#2E86AB'}}>Painel Administrativo</h1>
+            <h1 style={{textAlign: 'left', fontWeight: 'bold', fontSize: '25px', color: '#2E86AB'}}>Painel Administrativo</h1>
 
-            <div style={{borderBottom: '1px solid gray'}}><p style={{fontWeight: 'bold'}}>Relatório de Vendas</p></div>
+            <br></br>
+            <div>
+            <div style={{borderBottom: '1px solid lightgray', paddingBottom: '5px'}}><p style={{fontWeight: 'bold', textAlign: 'left'}}>Relatório de Vendas</p></div>
+            <br></br>
             <RelatorioHeader></RelatorioHeader>
             <RelatorioItem
             idpedido={1001}
@@ -40,9 +45,13 @@ function VendasEstoque() {
             total={'R$ 34,90'}
             ></RelatorioItem>
 
-            <br></br>
+            </div>
 
-            <div style={{borderBottom: '1px solid gray'}}><p style={{fontWeight: 'bold'}}>Estoque de Livros</p></div>
+            <br></br><br></br>
+
+            <div>
+            <div style={{borderBottom: '1px solid lightgray', paddingBottom: '5px'}}><p style={{fontWeight: 'bold', textAlign: 'left'}}>Estoque de Livros</p></div>
+            <br></br>
             <EstoqueHeader></EstoqueHeader>
             <EstoqueItem
             id={'001'}
@@ -57,7 +66,15 @@ function VendasEstoque() {
             preco={'R$ 34,90'}
             ></EstoqueItem>
 
-            <GerarBotao cor={1} label='Adicionar Produto'></GerarBotao>
+            </div>
+        
+            <br></br><br></br>
+
+            <GerarBotao
+              cor={0}
+              label="Adicionar Produto"
+              className="px-32 py-2"
+            />
 
         </div>
     </>
