@@ -28,7 +28,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/adicionar-produto" element={<AdicionarProduto />} />
-          <Route path="/administrar-clientes" element={<AdminCliente />} /> ................................
+          <Route path="/administrar-clientes" element={<AdminCliente />} />
           <Route path="/registrar-admin" element={<AdminRegistro />} />
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/carrinho" element={<Carrinho />} />

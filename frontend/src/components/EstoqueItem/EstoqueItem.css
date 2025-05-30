@@ -17,6 +17,7 @@
 .data-col.acao {
   display: flex;
   justify-content: flex-start;
+  gap: 8px
 }
 
 @media (max-width: 600px) {
