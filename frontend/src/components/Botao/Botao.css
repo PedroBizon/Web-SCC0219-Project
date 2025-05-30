@@ -1,12 +1,26 @@
-.BotaoAzul {
-    padding: 30px;
-    background-color: #2E86AB;
-    color: white;
+.bg-azul {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.BotaoVermelho {
-    padding: 10px;
-    background-color: #AB2E2E;
-    color: white;
+.bg-azul:hover {
+  background-color: #216b8c; 
 }
 
+.bg-green-500 {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.bg-green-500:hover {
+  background-color: #15803d; 
+}
+
+.bg-\[\#ab2e2e\] {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.bg-\[\#ab2e2e\]:hover {
+  background-color: #7a1e1e; 
+}
