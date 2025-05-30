@@ -9,7 +9,7 @@ import GerarBotao from "../components/Botao/Botao";
 function VendasEstoque() {
     return(
     <>
-        <Navbar></Navbar>
+        <Navbar logado={true} admin={true}></Navbar>
 
         <br></br><br></br><br></br><br></br>
 

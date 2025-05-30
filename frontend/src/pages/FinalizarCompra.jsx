@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar/Navbar";
 import InputField from "../components/InputField/InputField";
 import GerarBotao from "../components/Botao/Botao";
+import Footer from "../components/Footer/Footer";
 
 function FinalizarCompra() {
     return (
@@ -151,6 +152,9 @@ function FinalizarCompra() {
                     }
                 `}
             </style>
+
+            <Footer />
+
         </>
     )
 }

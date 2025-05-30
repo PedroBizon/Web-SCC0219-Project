@@ -174,6 +174,9 @@ function VisualizarProduto() {
                     }
                 `}
             </style>
+
+            <Footer/>
+
         </>
     );
 }

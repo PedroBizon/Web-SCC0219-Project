@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar/Navbar";
 import GerarBotao from "../components/Botao/Botao";
+import Footer from "../components/Footer/Footer";
 
 function DadosPerfil() {
   return (
@@ -66,6 +67,9 @@ function DadosPerfil() {
         <br></br>
 
       </div>
+
+        <Footer />
+      
     </>
   );
 }
