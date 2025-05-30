@@ -14,6 +14,7 @@ const EstoqueItem = ({ id, titulo, quantidade, preco, onDelete }) => {
               cor={0}
               label="Editar"
               className="px-0 py-0"
+              to = "/editar"
             />
             
             <GerarBotao

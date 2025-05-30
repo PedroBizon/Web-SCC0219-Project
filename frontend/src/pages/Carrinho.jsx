@@ -57,7 +57,7 @@ export default function Carrinho() {
               cor={0}
               label="Finalizar compra"
               className="px-6 py-2"
-              onClick={() => alert('Implementar checkout')}
+              to = "/finalizar"
             />
           </div>
         </div>

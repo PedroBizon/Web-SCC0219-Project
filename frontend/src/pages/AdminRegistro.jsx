@@ -30,14 +30,13 @@ export default function Login({ setLogado }) {
           <InputField label="Senha" type="password" />
           <InputField label="Confirmar senha" type="password" />
 
-
-          {/* ← CENTERED BUTTON HERE */}
           <div className="flex justify-center">
             <GerarBotao
               cor={0}
               label="Cadastrar"
               onClick={handleLogin}
               className="flex px-16 py-3 w-full"
+              to = "/estoque-vendas"
             />
           </div>
         </div>

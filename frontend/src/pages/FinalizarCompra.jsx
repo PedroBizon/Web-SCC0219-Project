@@ -116,7 +116,7 @@ function FinalizarCompra() {
                         </div>
 
                         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                            <GerarBotao cor={0} label="Finalizar Compra" className="px-8 py-4" />
+                            <GerarBotao cor={0} label="Finalizar Compra" className="px-8 py-4" to = "/"/>
                         </div>
                     </div>
                 </div>

@@ -9,9 +9,8 @@ export default function Login({ setLogado }) {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    // your real auth logic would go here…
     setLogado(true);
-    navigate('/');           // redirect to home
+    navigate('/');           
   };
 
   return (
@@ -34,14 +33,13 @@ export default function Login({ setLogado }) {
           <InputField label="Senha" type="password" />
           <InputField label="Confirmar senha" type="password" />
 
-
-          {/* ← CENTERED BUTTON HERE */}
           <div className="flex justify-center">
             <GerarBotao
               cor={0}
               label="Entrar"
               onClick={handleLogin}
               className="flex px-16 py-3 w-full"
+              to = "/"
             />
           </div>
         </div>

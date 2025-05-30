@@ -76,6 +76,7 @@ function VendasEstoque() {
               cor={0}
               label="Adicionar Produto"
               className="px-32 py-2"
+              to = "/adicionar-produto"
             />
 
         </div>

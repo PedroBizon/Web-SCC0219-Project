@@ -96,12 +96,14 @@ function EditarProduto() {
                         cor={2}
                         label="Voltar"
                         className="px-4 py-2"
+                        to = "/estoque-vendas"
                     />
 
                     <GerarBotao
                         cor={0}
                         label="Salvar"
                         className="px-4 py-2"
+                        to = "/estoque-vendas"
                     />
 
                 </div>
