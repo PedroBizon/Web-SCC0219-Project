@@ -74,9 +74,14 @@ function VendasEstoque() {
                             titulo={produto.titulo}
                             quantidade={produto.estoque}
                             preco={`R$ ${produto.preco}`}
-                            onDelete={() => removerProduto(produto.id)}
+                            onDelete={() => {
+                                if (window.confirm('Tem certeza que quer remover este produto do estoque?')) {
+                                    removerProduto(produto.id);
+                                }
+                            }}
                         />
-                    ))}
+                    ))} 
+
                 </div>
 
                 <br /><br />
