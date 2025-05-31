@@ -61,7 +61,7 @@ function DadosPerfil() {
         <br></br>
         <br></br>
 
-        <GerarBotao cor={0} label="Editar Perfil" className="px-32 py-2" />
+        <GerarBotao cor={0} label="Editar Perfil" className="px-32 py-2" to="/editar-perfil"/>
 
         <br></br>
         <br></br>
