@@ -1,0 +1,26 @@
+[
+  {
+    "id": "001",
+    "nome": "admin",
+    "senha": "admin",
+    "telefone": "12345",
+    "email": "admin@email.com",
+    "admin": "true"
+  },
+  {
+    "id": "002",
+    "nome": "Pedro",
+    "endereco": "Rua 2, Bairro 3",
+    "telefone": "123456",
+    "senha": "Pedro",
+    "email": "pedro@email.com"
+  },
+  {
+    "id": "003",
+    "nome": "Arthur",
+    "endereco": "Rua 3, Bairro 2",
+    "telefone": "1234567",
+    "senha": "Arthur",
+    "email": "pedro@email.com"
+  }
+]

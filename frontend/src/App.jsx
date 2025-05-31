@@ -21,6 +21,7 @@ import AdicionarProduto from './pages/AdicionarProduto';
 // import Principal from './pages/Principal'
 
 function App() {
+  
   const [logado, setLogado] = useState(false);
   
   return (

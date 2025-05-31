@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function InputField({
+const InputField = ({
   label,
   type = 'text',
   value,
@@ -8,7 +8,7 @@ export default function InputField({
   placeholder,
   width = '100%',   
   height = '48px',    
-}) {
+}) => {
   return (
     <div style={{ width }} className="flex flex-col mb-4">
       <label className="text-gray-600 text-sm font-medium mb-1">{label}</label>
@@ -24,3 +24,4 @@ export default function InputField({
   );
 }
 
+export default InputField;

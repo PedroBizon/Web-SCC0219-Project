@@ -1,18 +1,74 @@
 [
   {
     "id": "001",
-    "titulo": "Dom Casmurro",
+    "nome": "Dom Casmurro",
     "autor": "Machado de Assis",
-    "preco": "29.90",
-    "estoque": 25,
-    "descricao": "Clássico da literatura brasileira."
+    "preco": "30.00",
+    "estoque": "10",
+    "descricao": "Traiu, ou não?",
+    "foto": ""
   },
   {
     "id": "002",
-    "titulo": "1984",
-    "autor": "George Orwell",
-    "preco": "34.90",
-    "estoque": 10,
-    "descricao": "Romance distópico."
+    "nome": "O Alienista",
+    "autor": "Machado de Assis",
+    "preco": "35.69",
+    "estoque": "50",
+    "descricao": "Louco, só quem não é louco",
+    "foto": ""
+  },
+  {
+    "id": "003",
+    "nome": "Quincas Borba",
+    "autor": "Machado de Assis",
+    "preco": "27.90",
+    "estoque": "100",
+    "descricao": "Ao vencedor, as batatas!",
+    "foto": ""
+  },
+  {
+    "id": "004",
+    "nome": "As crônicas de Nárnia",
+    "autor": "C. S. Lewis",
+    "preco": "130.00",
+    "estoque": "3",
+    "descricao": "Viagens ao fim do mundo, criaturas fantásticas e batalhas épicas entre o bem e o mal.",
+    "foto": ""
+  },
+  {
+    "id": "005",
+    "nome": "Campo Geral",
+    "autor": "João Guimarães Rosa",
+    "preco": "49.00",
+    "estoque": "33",
+    "descricao": "O Mutum é lindo!",
+    "foto": ""
+  },
+  {
+    "id": "006",
+    "nome": "Ensaio sobre a cegueira",
+    "autor": "José Saramago",
+    "preco": "54.04",
+    "estoque": "45",
+    "descricao": "Estou cego!",
+    "foto": ""
+  },
+  {
+    "id": "007",
+    "nome": "Sagarana",
+    "autor": "João Guimarães Rosa",
+    "preco": "49.99",
+    "estoque": "14",
+    "descricao": "O burrinho Pedrês",
+    "foto": ""
+  },
+  {
+    "id": "008",
+    "nome": "Acabou a criatividade",
+    "autor": "Pessoa Criativa",
+    "preco": "100.00",
+    "estoque": "16",
+    "descricao": "Acabou a criatividade",
+    "foto": ""
   }
 ]
