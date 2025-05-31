@@ -18,6 +18,8 @@ import Cadastro from './pages/Cadastro';
 import AdminRegistro from './pages/AdminRegistro';
 import AdminCliente from './pages/AdminClientes';
 import AdicionarProduto from './pages/AdicionarProduto';
+import PerfilEditar from './pages/PerfilEditar';
+import CompraSucesso from './pages/CompraSucesso';
 // import Principal from './pages/Principal'
 
 function App() {
@@ -40,6 +42,8 @@ function App() {
           <Route path="/" element={<PrincipalUsuaio />} />
           <Route path="/estoque-vendas" element={<VendasEstoque />} />
           <Route path="/visualizar" element={<VisualizarProduto />} />
+          <Route path="/editar-perfil" element={<PerfilEditar />} />
+          <Route path="/compra-sucesso" element={<CompraSucesso />} />
         </Routes>
       </Router>
     </>
