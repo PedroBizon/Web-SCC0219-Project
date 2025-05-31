@@ -1,0 +1,18 @@
+[
+  {
+    "id": "001",
+    "titulo": "Dom Casmurro",
+    "autor": "Machado de Assis",
+    "preco": "29.90",
+    "estoque": 25,
+    "descricao": "Clássico da literatura brasileira."
+  },
+  {
+    "id": "002",
+    "titulo": "1984",
+    "autor": "George Orwell",
+    "preco": "34.90",
+    "estoque": 10,
+    "descricao": "Romance distópico."
+  }
+]

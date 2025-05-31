@@ -21,6 +21,7 @@ const EstoqueItem = ({ id, titulo, quantidade, preco, onDelete }) => {
               cor={2}
               label="Apagar"
               className="px-0 py-0"
+              onClick={onDelete}
             />
       </div>
     </div>

@@ -1,14 +1,50 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import InputField from "../components/InputField/InputField";
 import GerarBotao from "../components/Botao/Botao";
+import { useEstoque } from "../hooks/useEstoque";
 
-function EditarProduto() {
+function AdicionarProduto() {
+    const { adicionarProduto } = useEstoque();
+    const navigate = useNavigate();
+
+    const [produto, setProduto] = useState({
+        id: '',
+        titulo: '',
+        autor: '',
+        preco: '',
+        estoque: '',
+        descricao: ''
+    });
+
+    const handleChange = (field, value) => {
+        setProduto(prev => ({ ...prev, [field]: value }));
+    };
+
+    const handleSalvar = () => {
+        // Verificações básicas
+        if (!produto.id || !produto.titulo || !produto.preco) {
+            alert('Preencha os campos obrigatórios: ID, Título e Preço.');
+            return;
+        }
+
+        // Conversão numérica para preco e estoque
+        const novoProduto = {
+            ...produto,
+            preco: parseFloat(produto.preco).toFixed(2),
+            estoque: parseInt(produto.estoque, 10)
+        };
+
+        adicionarProduto(novoProduto);
+
+        navigate('/estoque-vendas');
+    };
+
     return (
         <>
-            <Navbar logado={true} admin={true}></Navbar>
-
+            <Navbar logado={true} admin={true} />
             <br /><br />
-
             <div style={{
                 width: '90%',
                 maxWidth: '600px',
@@ -19,9 +55,13 @@ function EditarProduto() {
                 padding: '20px',
                 boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
             }}>
-
-                <h1 style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '25px', color: '#2E86AB' }}>
-                    Livro Exemplo 1
+                <h1 style={{
+                    textAlign: 'center',
+                    fontWeight: 'bold',
+                    fontSize: '25px',
+                    color: '#2E86AB'
+                }}>
+                    Adicionar Produto
                 </h1>
 
                 <br />
@@ -33,7 +73,6 @@ function EditarProduto() {
                     gap: '10px',
                     margin: '20px 0'
                 }}>
-
                     <div style={{
                         width: '250px',
                         height: '400px',
@@ -41,41 +80,52 @@ function EditarProduto() {
                     }}></div>
 
                     <InputField
-                        placeholder={'Título'}
+                        placeholder="Título"
                         width="100%"
                         height="40px"
+                        value={produto.titulo}
+                        onChange={(e) => handleChange('titulo', e.target.value)}
                     />
 
                     <InputField
-                        placeholder={'Autor'}
+                        placeholder="Autor"
                         width="100%"
                         height="40px"
+                        value={produto.autor}
+                        onChange={(e) => handleChange('autor', e.target.value)}
                     />
 
                     <InputField
-                        placeholder={'ID Produto'}
+                        placeholder="ID Produto"
                         width="100%"
                         height="40px"
+                        value={produto.id}
+                        onChange={(e) => handleChange('id', e.target.value)}
                     />
 
                     <InputField
-                        placeholder={'Preço'}
+                        placeholder="Preço"
                         width="100%"
                         height="40px"
+                        value={produto.preco}
+                        onChange={(e) => handleChange('preco', e.target.value)}
                     />
 
                     <InputField
-                        placeholder={'Estoque'}
+                        placeholder="Estoque"
                         width="100%"
                         height="40px"
+                        value={produto.estoque}
+                        onChange={(e) => handleChange('estoque', e.target.value)}
                     />
 
                     <InputField
-                        placeholder={'Descrição'}
+                        placeholder="Descrição"
                         width="100%"
                         height="100px"
+                        value={produto.descricao}
+                        onChange={(e) => handleChange('descricao', e.target.value)}
                     />
-
                 </div>
 
                 <br />
@@ -85,21 +135,19 @@ function EditarProduto() {
                     justifyContent: 'space-between',
                     gap: '10px'
                 }}>
-
                     <GerarBotao
                         cor={2}
                         label="Voltar"
                         className="px-4 py-2"
-                        to = "/estoque-vendas"
+                        to="/estoque-vendas"
                     />
 
                     <GerarBotao
                         cor={0}
                         label="Salvar"
                         className="px-4 py-2"
-                        to = "/estoque-vendas"
+                        onClick={handleSalvar}
                     />
-
                 </div>
 
                 <br />
@@ -108,4 +156,4 @@ function EditarProduto() {
     );
 }
 
-export default EditarProduto;
+export default AdicionarProduto;
