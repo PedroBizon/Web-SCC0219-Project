@@ -1,11 +1,9 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 // Imports de páginas
-import PrincipalUsuaio from './pages/PrincipalUsuario';
+import PrincipalUsuario from './pages/PrincipalUsuario';
 import VisualizarProduto from './pages/VisualizarProduto';
 import VendasEstoque from './pages/VendasEstoque';
 import PrincipalAdmin from './pages/PrincipalAdmin';
@@ -20,11 +18,85 @@ import AdminCliente from './pages/AdminClientes';
 import AdicionarProduto from './pages/AdicionarProduto';
 import PerfilEditar from './pages/PerfilEditar';
 import CompraSucesso from './pages/CompraSucesso';
-// import Principal from './pages/Principal'
 
 function App() {
   
   const [logado, setLogado] = useState(false);
+
+  let livros = [
+    {
+      "id": "001",
+      "nome": "Dom Casmurro",
+      "autor": "Machado de Assis",
+      "preco": "30.00",
+      "estoque": "10",
+      "descricao": "Traiu, ou não?",
+      "foto": "/imagens/dom_casmurro"
+    },
+    {
+      "id": "002",
+      "nome": "O Alienista",
+      "autor": "Machado de Assis",
+      "preco": "35.69",
+      "estoque": "50",
+      "descricao": "Louco, só quem não é louco",
+      "foto": "/imagens/alienista"
+    },
+    {
+      "id": "003",
+      "nome": "Quincas Borba",
+      "autor": "Machado de Assis",
+      "preco": "27.90",
+      "estoque": "100",
+      "descricao": "Ao vencedor, as batatas!",
+      "foto": "/imagens/quincas_borba"
+    },
+    {
+      "id": "004",
+      "nome": "As crônicas de Nárnia",
+      "autor": "C. S. Lewis",
+      "preco": "130.00",
+      "estoque": "3",
+      "descricao": "Viagens ao fim do mundo, criaturas fantásticas e batalhas épicas entre o bem e o mal.",
+      "foto": "/imagens/cronicas_narnia"
+    },
+    {
+      "id": "005",
+      "nome": "Campo Geral",
+      "autor": "João Guimarães Rosa",
+      "preco": "49.00",
+      "estoque": "33",
+      "descricao": "O Mutum é lindo!",
+      "foto": "/imagens/campo_geral"
+    },
+    {
+      "id": "006",
+      "nome": "Ensaio sobre a cegueira",
+      "autor": "José Saramago",
+      "preco": "54.04",
+      "estoque": "45",
+      "descricao": "Estou cego!",
+      "foto": "/imagens/ensaio_sobre_cegueira"
+    },
+    {
+      "id": "007",
+      "nome": "Sagarana",
+      "autor": "João Guimarães Rosa",
+      "preco": "49.99",
+      "estoque": "14",
+      "descricao": "O burrinho Pedrês",
+      "foto": "/imagens/sagrana"
+    },
+    {
+      "id": "008",
+      "nome": "Algoritmos - Teoria e Prática",
+      "autor": "Thomas H. Cormen",
+      "preco": "579.00",
+      "estoque": "16",
+      "descricao": "Este livro apresenta um texto abrangente sobre o moderno estudo de algoritmos para computadores. É uma obra clássica, cuja primeira edição tornou-se amplamente adotada nas melhores universidades em todo o mundo, bem como padrão de referência para profissionais da área. Nesta terceira edição, totalmente revista e ampliada, as mudanças são extensivas e incluem novos capítulos, exercícios e problemas; revisão de pseudocódigos e um estilo de redação mais claro.A edição brasileira conta ainda com nova tradução e revisão técnica do Prof. Arnaldo Mandel, do Departamento de Ciência da Computação do Instituto de Matemática e Estatística da Universidade de São Paulo. Elaborado para ser ao mesmo tempo versátil e completo, o livro atende alunos dos cursos de graduação e pós-graduação em algoritmos ou estruturas de dados?",
+      "foto": "/imagens/introductio_to_algorithms"
+    }
+  ]
   
   return (
     <>
@@ -40,7 +112,7 @@ function App() {
           <Route path="/finalizar" element={<FinalizarCompra />} />
           <Route path="/login" element={<Login />} />
           <Route path="/admin" element={<PrincipalAdmin />} />
-          <Route path="/" element={<PrincipalUsuaio />} />
+          <Route path="/" element={<PrincipalUsuario livros={livros}/>} />
           <Route path="/estoque-vendas" element={<VendasEstoque />} />
           <Route path="/visualizar" element={<VisualizarProduto />} />
           <Route path="/editar-perfil" element={<PerfilEditar />} />
