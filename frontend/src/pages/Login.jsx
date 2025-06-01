@@ -1,17 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import Navbar      from '../components/Navbar/Navbar';
 import InputField  from '../components/InputField/InputField';
 import GerarBotao  from '../components/Botao/Botao';
 
-export default function Login({ setLogado }) {
+const Login = (props) => {
   const navigate = useNavigate();
 
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+
   const handleLogin = () => {
-    // your real auth logic would go here…
-    setLogado(true);
-    navigate('/');           // redirect to home
+    const usuario = props.usuarios.find(u => u.email === email && u.senha === senha);
+
+    if (usuario) {
+      props.setLogado(true);
+
+      if (usuario.admin === true || usuario.admin === 'true') {
+        navigate('/admin');
+      } else {
+        navigate('/');
+      }
+    } else {
+      alert('Email ou senha inválidos');
+    }
   };
 
   return (
@@ -28,8 +41,18 @@ export default function Login({ setLogado }) {
             Preencha os campos abaixo para se cadastrar na loja.
           </p>
 
-          <InputField label="E-mail" type="email" />
-          <InputField label="Senha" type="password" />
+          <InputField 
+            label="E-mail" 
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)} 
+            />
+          <InputField 
+            label="Senha" 
+            type="password"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)} 
+            />
 
           <div className="text-center">
             <Link to="/esqueci-senha" className="text-[#2E86AB] font-medium hover:underline">
@@ -38,14 +61,12 @@ export default function Login({ setLogado }) {
           </div>
 
           <div className="flex justify-center">
-            <Link to='/'>
             <GerarBotao
               cor={0}
               label="Entrar"
               onClick={handleLogin}
               className="px-16 py-3"
-            />      
-            </Link>      
+            />           
           </div>
 
           <div className="text-center text-sm text-gray-600">
@@ -60,3 +81,4 @@ export default function Login({ setLogado }) {
   );
 }
 
+export default Login;

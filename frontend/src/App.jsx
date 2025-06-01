@@ -96,6 +96,35 @@ function App() {
       "foto": "/imagens/introduction_to_algorithms.jpg"
     }
   ]
+
+  let usuarios = [
+  {
+    "id": "001",
+    "nome": "admin",
+    "senha": "admin",
+    "telefone": "12345",
+    "email": "admin@email.com",
+    "admin": "true"
+  },
+  {
+    "id": "002",
+    "nome": "Pedro",
+    "endereco": "Rua 2, Bairro 3",
+    "telefone": "123456",
+    "senha": "Pedro",
+    "email": "pedro@email.com",
+    "admin": "false"
+  },
+  {
+    "id": "003",
+    "nome": "Arthur",
+    "endereco": "Rua 3, Bairro 2",
+    "telefone": "1234567",
+    "senha": "Arthur",
+    "email": "pedro@email.com",
+    "admin": "false"
+  }
+]
   
   return (
     <>
@@ -109,7 +138,7 @@ function App() {
           <Route path="/perfil" element={<DadosPerfil />} />
           <Route path="/editar" element={<EditarProduto />} />
           <Route path="/finalizar" element={<FinalizarCompra />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login setLogado={setLogado} usuarios={usuarios}/>} />
           <Route path="/admin" element={<PrincipalAdmin />} />
           <Route path="/" element={<PrincipalUsuario livros={livros}/>} />
           <Route path="/estoque-vendas" element={<VendasEstoque />} />
