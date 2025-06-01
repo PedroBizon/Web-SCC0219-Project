@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './App.css'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 // Imports de páginas
@@ -31,7 +30,7 @@ function App() {
       "preco": "30.00",
       "estoque": "10",
       "descricao": "Traiu, ou não?",
-      "foto": "/imagens/dom_casmurro"
+      "foto": "/imagens/dom_casmurro.jpg"
     },
     {
       "id": "002",
@@ -40,7 +39,7 @@ function App() {
       "preco": "35.69",
       "estoque": "50",
       "descricao": "Louco, só quem não é louco",
-      "foto": "/imagens/alienista"
+      "foto": "/imagens/alienista.jpg"
     },
     {
       "id": "003",
@@ -49,7 +48,7 @@ function App() {
       "preco": "27.90",
       "estoque": "100",
       "descricao": "Ao vencedor, as batatas!",
-      "foto": "/imagens/quincas_borba"
+      "foto": "/imagens/quincas_borba.jpg"
     },
     {
       "id": "004",
@@ -58,7 +57,7 @@ function App() {
       "preco": "130.00",
       "estoque": "3",
       "descricao": "Viagens ao fim do mundo, criaturas fantásticas e batalhas épicas entre o bem e o mal.",
-      "foto": "/imagens/cronicas_narnia"
+      "foto": "/imagens/cronicas_narnia.jpg"
     },
     {
       "id": "005",
@@ -67,7 +66,7 @@ function App() {
       "preco": "49.00",
       "estoque": "33",
       "descricao": "O Mutum é lindo!",
-      "foto": "/imagens/campo_geral"
+      "foto": "/imagens/campo_geral.jpg"
     },
     {
       "id": "006",
@@ -76,7 +75,7 @@ function App() {
       "preco": "54.04",
       "estoque": "45",
       "descricao": "Estou cego!",
-      "foto": "/imagens/ensaio_sobre_cegueira"
+      "foto": "/imagens/ensaio_sobre_cegueira.jpg"
     },
     {
       "id": "007",
@@ -85,7 +84,7 @@ function App() {
       "preco": "49.99",
       "estoque": "14",
       "descricao": "O burrinho Pedrês",
-      "foto": "/imagens/sagrana"
+      "foto": "/imagens/sagarana.jpg"
     },
     {
       "id": "008",
@@ -94,7 +93,7 @@ function App() {
       "preco": "579.00",
       "estoque": "16",
       "descricao": "Este livro apresenta um texto abrangente sobre o moderno estudo de algoritmos para computadores. É uma obra clássica, cuja primeira edição tornou-se amplamente adotada nas melhores universidades em todo o mundo, bem como padrão de referência para profissionais da área. Nesta terceira edição, totalmente revista e ampliada, as mudanças são extensivas e incluem novos capítulos, exercícios e problemas; revisão de pseudocódigos e um estilo de redação mais claro.A edição brasileira conta ainda com nova tradução e revisão técnica do Prof. Arnaldo Mandel, do Departamento de Ciência da Computação do Instituto de Matemática e Estatística da Universidade de São Paulo. Elaborado para ser ao mesmo tempo versátil e completo, o livro atende alunos dos cursos de graduação e pós-graduação em algoritmos ou estruturas de dados?",
-      "foto": "/imagens/introductio_to_algorithms"
+      "foto": "/imagens/introduction_to_algorithms.jpg"
     }
   ]
   

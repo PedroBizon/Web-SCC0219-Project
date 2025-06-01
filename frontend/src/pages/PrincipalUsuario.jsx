@@ -3,7 +3,7 @@ import SearchBar from "../components/SearchBar/SearchBar";
 import Footer from "../components/Footer/Footer";
 import BookCard from "../components/BookCard/BookCard";
 
-function PrincipalUsuario() {
+const PrincipalUsuario = (props) => {
     return (
         <>
             <Navbar />
@@ -18,14 +18,12 @@ function PrincipalUsuario() {
                 margin: '40px auto',
                 padding: '10px'
             }}>
-                <BookCard title="Título 1" />
-                <BookCard title="Título 2" />
-                <BookCard title="Título 3" />
-                <BookCard title="Título 4" />
-                <BookCard title="Título 5" />
-                <BookCard title="Título 6" />
-                <BookCard title="Título 7" />
-                <BookCard title="Título 8" />
+                {(props.livros).map(livro => <BookCard
+                key={livro.id}
+                nome={livro.nome}
+                preco={livro.preco}
+                foto={livro.foto}
+                />)}
             </div>
 
             <style>{`
