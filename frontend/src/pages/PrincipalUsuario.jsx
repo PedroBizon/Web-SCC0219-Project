@@ -1,13 +1,25 @@
+import { useState } from 'react';
 import Navbar from "../components/Navbar/Navbar";
 import SearchBar from "../components/SearchBar/SearchBar";
 import Footer from "../components/Footer/Footer";
 import BookCard from "../components/BookCard/BookCard";
 
 const PrincipalUsuario = (props) => {
+    const [filteredBooks, setFilteredBooks] = useState(props.livros);
+
+    const handleSearch = (searchTerm) => {
+        const lowerSearch = searchTerm.toLowerCase();
+        const filtered = props.livros.filter(livro => 
+            livro.nome.toLowerCase().includes(lowerSearch) ||
+            livro.autor.toLowerCase().includes(lowerSearch)
+        );
+        setFilteredBooks(filtered);
+    };
+
     return (
         <>
             <Navbar />
-            <SearchBar />
+            <SearchBar onSearch={handleSearch} />
 
             <div className="grid-container" style={{
                 display: 'grid',
@@ -18,12 +30,14 @@ const PrincipalUsuario = (props) => {
                 margin: '40px auto',
                 padding: '10px'
             }}>
-                {(props.livros).map(livro => <BookCard
-                key={livro.id}
-                nome={livro.nome}
-                preco={"R$ "+ livro.preco}
-                foto={livro.foto}
-                />)}
+                {filteredBooks.map(livro => (
+                    <BookCard
+                        key={livro.id}
+                        nome={livro.nome}
+                        preco={"R$ " + livro.preco}
+                        foto={livro.foto}
+                    />
+                ))}
             </div>
 
             <style>{`
@@ -43,6 +57,6 @@ const PrincipalUsuario = (props) => {
             <Footer />
         </>
     );
-}
+};
 
 export default PrincipalUsuario;
