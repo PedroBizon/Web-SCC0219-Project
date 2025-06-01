@@ -21,7 +21,7 @@ const PrincipalUsuario = (props) => {
                 {(props.livros).map(livro => <BookCard
                 key={livro.id}
                 nome={livro.nome}
-                preco={livro.preco}
+                preco={"R$ "+ livro.preco}
                 foto={livro.foto}
                 />)}
             </div>
