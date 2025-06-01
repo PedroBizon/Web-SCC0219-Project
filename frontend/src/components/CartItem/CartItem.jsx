@@ -1,4 +1,5 @@
 import './CartItem.css';
+import GerarBotao from '../Botao/Botao';
 
 function CartItem({ book, onRemove }) {
   return (
@@ -12,7 +13,12 @@ function CartItem({ book, onRemove }) {
 
       <div className="book-actions">
         <span className="book-price">R$ {book.price.toFixed(2)}</span>
-        <button className="remove-button" onClick={() => onRemove(book.id)}>Remover</button>
+        <GerarBotao
+        cor={2}
+        label="Remover"
+        className="px-0 py-0"
+        onClick={() => onRemove(book.id)}
+        />
       </div>
     </div>
   );
