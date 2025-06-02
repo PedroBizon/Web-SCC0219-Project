@@ -1,3 +1,4 @@
+// src/pages/Carrinho.jsx
 import React from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
@@ -11,17 +12,15 @@ const Carrinho = ({ carrinho, setCarrinho }) => {
   };
 
   const total = carrinho
-    .reduce((sum, item) => sum + item.price, 0)
+    .reduce((sum, item) => sum + parseFloat(item.preco), 0)
     .toFixed(2)
     .replace('.', ',');
 
   return (
     <>
       <Navbar logado={true} />
-
       <div className="bg-gray-100 min-h-[100vh] pt-16 flex flex-col items-center">
         <div className="bg-white rounded-xl shadow-lg w-full max-w-3xl p-8 space-y-6 mt-6">
-          
           <h1 className="text-3xl font-bold text-[#2E86AB] text-center">
             Seu carrinho
           </h1>
@@ -31,9 +30,9 @@ const Carrinho = ({ carrinho, setCarrinho }) => {
               <p className="text-center text-gray-500">Seu carrinho está vazio.</p>
             ) : (
               carrinho.map(item => (
-                <CartItem 
-                  key={item.id} 
-                  book={item} 
+                <CartItem
+                  key={item.id}
+                  book={item}
                   onRemove={handleRemove}
                 />
               ))
@@ -53,7 +52,6 @@ const Carrinho = ({ carrinho, setCarrinho }) => {
           )}
         </div>
       </div>
-
       <Footer />
     </>
   );

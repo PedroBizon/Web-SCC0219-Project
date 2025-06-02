@@ -136,7 +136,8 @@ function App() {
           <Route path="/administrar-clientes" element={<AdminCliente />} />
           <Route path="/registrar-admin" element={<AdminRegistro />} />
           <Route path="/cadastro" element={<Cadastro />} />
-          <Route path="/carrinho" element={<Carrinho carrinho={carrinho} setCarrinho={setCarrinho}/>} />
+          <Route path="/carrinho" element={<Carrinho 
+            carrinho={carrinho} setCarrinho={setCarrinho}/>} />
           <Route path="/perfil" element={<DadosPerfil />} />
           <Route path="/editar" element={<EditarProduto />} />
           <Route path="/finalizar" element={<FinalizarCompra />} />
