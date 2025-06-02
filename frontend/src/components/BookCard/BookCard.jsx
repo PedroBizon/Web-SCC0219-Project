@@ -9,7 +9,7 @@ function BookCard(props) {
       </div>
       <h3 className="book-title">{props.nome}</h3>
       <p className="book-price">{props.preco}</p>
-      <GerarBotao cor={0} label="Adicionar ao carrinho" />
+      <GerarBotao cor={0} label="Adicionar ao carrinho" onClick={() => props.setCarrinho([...Carrinho, livro])}/>
     </div>
   );
 }

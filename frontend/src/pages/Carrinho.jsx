@@ -4,20 +4,14 @@ import Footer from '../components/Footer/Footer';
 import GerarBotao from '../components/Botao/Botao';
 import CartItem from '../components/CartItem/CartItem';
 
-export default function Carrinho() {
-  
-  const itens = [
-    { id: 1, title: 'Livro exemplo 1', author: 'Autor exemplo 1', price: 49.99 },
-    { id: 2, title: 'Livro exemplo 2', author: 'Autor exemplo 2', price: 79.99 },
-    { id: 3, title: 'Livro exemplo 3', author: 'Autor exemplo 3', price: 29.99 },
-  ];
+const Carrinho = ({ carrinho, setCarrinho }) => {
+  const handleRemove = (id) => {
+    const novoCarrinho = carrinho.filter(item => item.id !== id);
+    setCarrinho(novoCarrinho);
+  };
 
-  function handleRemove(id) {
-    console.log("Remover item com id:", id);
-  }
-
-  const total = itens
-    .reduce((sum, i) => sum + i.price, 0)
+  const total = carrinho
+    .reduce((sum, item) => sum + item.price, 0)
     .toFixed(2)
     .replace('.', ',');
 
@@ -33,31 +27,36 @@ export default function Carrinho() {
           </h1>
 
           <div className="space-y-4">
-            
-            {itens.map(item => (
-              <CartItem 
-                key={item.id} 
-                book={item} 
-                onRemove={handleRemove}
-              />
-            ))}
+            {carrinho.length === 0 ? (
+              <p className="text-center text-gray-500">Seu carrinho está vazio.</p>
+            ) : (
+              carrinho.map(item => (
+                <CartItem 
+                  key={item.id} 
+                  book={item} 
+                  onRemove={handleRemove}
+                />
+              ))
+            )}
           </div>
 
-          <br></br>
-
-<div className="flex flex-col items-center space-y-4 mt-6">
-  <span className="font-semibold">Total: R$ {total}</span>
-  <GerarBotao
-    cor={0}
-    label="Finalizar compra"
-    className="px-32 py-2"
-    to="/finalizar"
-  />
-</div>
+          {carrinho.length > 0 && (
+            <div className="flex flex-col items-center space-y-4 mt-6">
+              <span className="font-semibold">Total: R$ {total}</span>
+              <GerarBotao
+                cor={0}
+                label="Finalizar compra"
+                className="px-32 py-2"
+                to="/finalizar"
+              />
+            </div>
+          )}
         </div>
       </div>
 
       <Footer />
     </>
   );
-}
+};
+
+export default Carrinho;

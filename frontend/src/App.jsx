@@ -21,6 +21,8 @@ function App() {
   
   const [logado, setLogado] = useState(false);
 
+  const[carrinho, setCarrinho] = useState([]);
+
   let livros = [
     {
       "id": "001",
@@ -124,6 +126,7 @@ function App() {
     "admin": "false"
   }
 ]
+
   
   return (
     <>
@@ -133,12 +136,17 @@ function App() {
           <Route path="/administrar-clientes" element={<AdminCliente />} />
           <Route path="/registrar-admin" element={<AdminRegistro />} />
           <Route path="/cadastro" element={<Cadastro />} />
-          <Route path="/carrinho" element={<Carrinho />} />
+          <Route path="/carrinho" element={<Carrinho carrinho={carrinho} setCarrinho={setCarrinho}/>} />
           <Route path="/perfil" element={<DadosPerfil />} />
           <Route path="/editar" element={<EditarProduto />} />
           <Route path="/finalizar" element={<FinalizarCompra />} />
-          <Route path="/login" element={<Login setLogado={setLogado} usuarios={usuarios}/>} />
-          <Route path="/" element={<PrincipalUsuario livros={livros}/>} />
+          <Route path="/login" element={<Login 
+          setLogado={setLogado} 
+          usuarios={usuarios}/>} />
+          <Route path="/" element={<PrincipalUsuario 
+            livros={livros} 
+            carrinho={carrinho} 
+            setCarrinho={setCarrinho}/>} />
           <Route path="/admin" element={<VendasEstoque livros={livros}/>} />
           <Route path="/visualizar" element={<VisualizarProduto />} />
           <Route path="/editar-perfil" element={<PerfilEditar />} />
