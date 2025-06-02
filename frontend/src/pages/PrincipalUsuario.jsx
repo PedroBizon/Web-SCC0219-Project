@@ -18,7 +18,7 @@ const PrincipalUsuario = (props) => {
 
     return (
         <>
-            <Navbar />
+            <Navbar logado={props.logado} />
             <SearchBar onSearch={handleSearch} />
 
             <div className="grid-container" style={{

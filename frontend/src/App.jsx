@@ -120,7 +120,7 @@ function App() {
     "endereco": "Rua 3, Bairro 2",
     "telefone": "1234567",
     "senha": "Arthur",
-    "email": "pedro@email.com",
+    "email": "arthur@email.com",
     "admin": "false"
   }
 ]
@@ -133,12 +133,12 @@ function App() {
           <Route path="/administrar-clientes" element={<AdminCliente />} />
           <Route path="/registrar-admin" element={<AdminRegistro />} />
           <Route path="/cadastro" element={<Cadastro />} />
-          <Route path="/carrinho" element={<Carrinho />} />
+          <Route path="/carrinho" element={<Carrinho/>} />
           <Route path="/perfil" element={<DadosPerfil />} />
           <Route path="/editar" element={<EditarProduto />} />
           <Route path="/finalizar" element={<FinalizarCompra />} />
           <Route path="/login" element={<Login setLogado={setLogado} usuarios={usuarios}/>} />
-          <Route path="/" element={<PrincipalUsuario livros={livros}/>} />
+          <Route path="/" element={<PrincipalUsuario livros={livros} logado={logado} />} />
           <Route path="/admin" element={<VendasEstoque livros={livros}/>} />
           <Route path="/visualizar" element={<VisualizarProduto />} />
           <Route path="/editar-perfil" element={<PerfilEditar />} />
