@@ -137,15 +137,18 @@ function App() {
           <Route path="/registrar-admin" element={<AdminRegistro />} />
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/carrinho" element={<Carrinho 
-            carrinho={carrinho} setCarrinho={setCarrinho}/>} />
+            carrinho={carrinho}
+            logado={logado}  
+            setCarrinho={setCarrinho}/>} />
           <Route path="/perfil" element={<DadosPerfil />} />
           <Route path="/editar" element={<EditarProduto />} />
           <Route path="/finalizar" element={<FinalizarCompra />} />
           <Route path="/login" element={<Login 
-          setLogado={setLogado} 
-          usuarios={usuarios}/>} />
+            setLogado={setLogado} 
+            usuarios={usuarios}/>} />
           <Route path="/" element={<PrincipalUsuario 
-            livros={livros} 
+            livros={livros}
+            logado={logado} 
             carrinho={carrinho} 
             setCarrinho={setCarrinho}/>} />
           <Route path="/admin" element={<VendasEstoque livros={livros}/>} />

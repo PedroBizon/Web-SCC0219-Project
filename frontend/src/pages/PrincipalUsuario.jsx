@@ -5,7 +5,7 @@ import SearchBar from "../components/SearchBar/SearchBar";
 import Footer from "../components/Footer/Footer";
 import BookCard from "../components/BookCard/BookCard";
 
-const PrincipalUsuario = ({ livros, carrinho, setCarrinho }) => {
+const PrincipalUsuario = ({ livros, carrinho, setCarrinho, logado }) => {
   const [filteredBooks, setFilteredBooks] = useState(livros);
 
   const handleSearch = (searchTerm) => {
@@ -19,16 +19,17 @@ const PrincipalUsuario = ({ livros, carrinho, setCarrinho }) => {
 
   return (
     <>
-      <Navbar />
+      <Navbar logado={logado}/>
       <SearchBar onSearch={handleSearch} />
 
       <div
         className="grid-container"
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
+          gridTemplateColumns: 'repeat(4, 1fr)',  
           gap: '50px',
-          maxWidth: '1000px',
+          columnGap: '0%',                            
+          maxWidth: '1000px',                     
           margin: '40px auto',
           padding: '10px'
         }}
