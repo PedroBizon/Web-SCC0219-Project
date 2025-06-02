@@ -6,7 +6,7 @@ import EstoqueItem from "../components/EstoqueItem/EstoqueItem";
 import GerarBotao from "../components/Botao/Botao";
 import { useEstoque } from "../hooks/useEstoque";
 
-function VendasEstoque() {
+const VendasEstoque = (props) => {
     const { estoque, removerProduto } = useEstoque(); 
 
     return (
@@ -67,18 +67,18 @@ function VendasEstoque() {
                     <br />
                     <EstoqueHeader />
 
-                    {estoque.map(produto => (
+                    {estoque.map(livro => (
                         <EstoqueItem
-                            key={produto.id}
-                            id={produto.id}
-                            titulo={produto.nome}
-                            quantidade={produto.estoque}
-                            preco={`R$ ${produto.preco}`}
-                            autor={produto.autor}
-                            descricao={produto.descricao}
+                            key={livro.id}
+                            id={livro.id}
+                            titulo={livro.nome}
+                            quantidade={livro.estoque}
+                            preco={`R$ ${livro.preco}`}
+                            autor={livro.autor}
+                            descricao={livro.descricao}
                             onDelete={() => {
                                 if (window.confirm('Tem certeza que quer remover este produto do estoque?')) {
-                                    removerProduto(produto.id);
+                                    removerProduto(livro.id);
                                 }
                             }}
                         />
