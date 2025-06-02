@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import PrincipalUsuario from './pages/PrincipalUsuario';
 import VisualizarProduto from './pages/VisualizarProduto';
 import VendasEstoque from './pages/VendasEstoque';
-import PrincipalAdmin from './pages/PrincipalAdmin';
 import Login from './pages/Login';
 import FinalizarCompra from './pages/FinalizarCompra';
 import EditarProduto from './pages/EditarProduto';
@@ -139,9 +138,8 @@ function App() {
           <Route path="/editar" element={<EditarProduto />} />
           <Route path="/finalizar" element={<FinalizarCompra />} />
           <Route path="/login" element={<Login setLogado={setLogado} usuarios={usuarios}/>} />
-          <Route path="/admin" element={<PrincipalAdmin />} />
           <Route path="/" element={<PrincipalUsuario livros={livros}/>} />
-          <Route path="/estoque-vendas" element={<VendasEstoque />} />
+          <Route path="/admin" element={<VendasEstoque livros={livros}/>} />
           <Route path="/visualizar" element={<VisualizarProduto />} />
           <Route path="/editar-perfil" element={<PerfilEditar />} />
           <Route path="/compra-sucesso" element={<CompraSucesso />} />

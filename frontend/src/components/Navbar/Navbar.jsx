@@ -41,7 +41,7 @@ function Navbar({ admin = false, logado = false }) {
         </div>
         <div className="flex gap-4">
           <Link to="/registrar-admin" className="px-4">Registrar Admin</Link> 
-          <Link to="/estoque-vendas" className="px-4">Estoque/Vendas</Link>
+          <Link to="/admin" className="px-4">Estoque/Vendas</Link>
           <Link to="/administrar-clientes" className="px-4">Administrar Clientes</Link>
         </div>
       </nav>
