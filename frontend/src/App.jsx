@@ -122,7 +122,7 @@ function App() {
     "endereco": "Rua 3, Bairro 2",
     "telefone": "1234567",
     "senha": "Arthur",
-    "email": "pedro@email.com",
+    "email": "arthur@email.com",
     "admin": "false"
   }
 ]
