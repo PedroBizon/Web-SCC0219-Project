@@ -1,7 +1,6 @@
 .client-header {
   display: grid;
-  max-width: 1600px;
-  grid-template-columns: 100px 400px 300px 400px 200px;
+  grid-template-columns: minmax(80px, 100px) minmax(150px, 400px) minmax(150px, 300px) minmax(150px, 400px) minmax(100px, 200px);
   align-items: center;
   background-color: #2E86AB;
   color: white;
@@ -9,18 +8,30 @@
   padding: 10px;
   margin: 0 auto;
   box-sizing: border-box;
+  gap: 8px;
 }
 
 .header-col {
   padding: 4px 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .client-header {
+    grid-template-columns: repeat(5, 1fr);
+    font-size: 12px;
+    padding: 8px;
+    gap: 6px;
+  }
 }
 
 @media (max-width: 600px) {
   .client-header {
     grid-template-columns: repeat(5, 1fr);
-    font-size: 12px;
+    font-size: 9px;
     padding: 6px;
     gap: 4px;
-    font-size: 9px;
   }
 }
