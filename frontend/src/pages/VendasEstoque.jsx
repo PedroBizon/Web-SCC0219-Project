@@ -7,7 +7,7 @@ import GerarBotao from "../components/Botao/Botao";
 import { useEstoque } from "../hooks/useEstoque";
 
 function VendasEstoque() {
-    const { estoque, removerProduto } = useEstoque();  // ✅ IMPORTANTE
+    const { estoque, removerProduto } = useEstoque(); 
 
     return (
         <>
@@ -71,7 +71,7 @@ function VendasEstoque() {
                         <EstoqueItem
                             key={produto.id}
                             id={produto.id}
-                            titulo={produto.titulo}
+                            titulo={produto.nome}
                             quantidade={produto.estoque}
                             preco={`R$ ${produto.preco}`}
                             autor={produto.autor}
