@@ -2,7 +2,7 @@ import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import GerarBotao from "../components/Botao/Botao";
 
-function VisualizarProduto() {
+const VisualizarProduto = (props) => {
     return (
         <>
             <Navbar logado></Navbar>
@@ -114,16 +114,17 @@ function VisualizarProduto() {
                     alignItems: 'center',
                     margin: '0 10%'
                 }}>
-                    {/* Ordem mantida: Adicionar acima, Voltar abaixo no responsivo */}
+        
                     <GerarBotao
                         cor={0}
-                        label="Adicionar ao carrinho"
+                        label="Voltar"
                         className="botao-produto px-8 py-4"
+                        to="/"
                     />
 
                     <GerarBotao
                         cor={0}
-                        label="Voltar"
+                        label="Adicionar ao Carrinho"
                         className="botao-produto px-8 py-4"
                     />
                 </div>
