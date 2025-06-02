@@ -89,14 +89,6 @@ useEffect(() => {
                     />
 
                     <InputField
-                        placeholder={'ID Produto'}
-                        value={idProduto}
-                        onChange={e => setIdProduto(e.target.value)}
-                        width="100%"
-                        height="40px"
-                    />
-
-                    <InputField
                         placeholder={'Preço'}
                         value={preco}
                         onChange={e => setPreco(e.target.value)}

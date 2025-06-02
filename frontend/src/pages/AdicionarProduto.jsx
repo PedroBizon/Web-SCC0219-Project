@@ -23,13 +23,12 @@ function AdicionarProduto() {
     };
 
     const handleSalvar = () => {
-        // Verificações básicas
+       
         if (!produto.id || !produto.titulo || !produto.preco) {
             alert('Preencha os campos obrigatórios: ID, Título e Preço.');
             return;
         }
 
-        // Conversão numérica para preco e estoque
         const novoProduto = {
             ...produto,
             preco: parseFloat(produto.preco).toFixed(2),
@@ -93,14 +92,6 @@ function AdicionarProduto() {
                         height="40px"
                         value={produto.autor}
                         onChange={(e) => handleChange('autor', e.target.value)}
-                    />
-
-                    <InputField
-                        placeholder="ID Produto"
-                        width="100%"
-                        height="40px"
-                        value={produto.id}
-                        onChange={(e) => handleChange('id', e.target.value)}
                     />
 
                     <InputField
