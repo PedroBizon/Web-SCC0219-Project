@@ -7,9 +7,39 @@ function DadosPerfil() {
     <>
       <Navbar logado={true} />
 
-        <br></br><br></br>
+      <br /><br />
 
       <style>{`
+        .perfil-container {
+          width: min(90%, 400px);
+          margin: 10% auto;
+          padding: 20px;
+          background-color: white;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+          text-align: center;
+        }
+
+        .perfil-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid lightgray;
+          padding-bottom: 10px;
+          margin-bottom: 20px;
+          font-size: 16px;
+        }
+
+        @media (max-width: 900px) {
+          .perfil-container {
+            width: 70%;
+            padding: 15px;
+          }
+          .perfil-row {
+            font-size: 14px;
+            margin-bottom: 15px;
+          }
+        }
 
         @media (max-width: 600px) {
           .perfil-container {
@@ -18,28 +48,24 @@ function DadosPerfil() {
             padding: 15px !important;
           }
           .perfil-row {
-            margin-bottom: 6px;
+            font-size: 12px;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
           }
         }
-
       `}</style>
 
-      <div
-        className="perfil-container"
-        style={{
-          width: "30%",
-          height: "auto",
-          backgroundColor: "white",
+      <div className="perfil-container">
+        <h1 style={{
           textAlign: "center",
-          margin: "10% auto",
-          borderRadius: "10px",
-          padding: "20px",
-          boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
-        }}
-      >
-        <h1 style={{textAlign: "center", fontWeight: "bold", fontSize: "25px", color: "#2E86AB",}}>Meu Perfil</h1>
+          fontWeight: "bold",
+          fontSize: "25px",
+          color: "#2E86AB",
+        }}>
+          Meu Perfil
+        </h1>
 
-        <br></br>
+        <br />
 
         {[
           { label: "Nome:", value: "Maria da Silva" },
@@ -50,26 +76,20 @@ function DadosPerfil() {
           <div
             key={label}
             className="perfil-row"
-            style={{borderBottom: "1px solid lightgray", paddingBottom: "10px", display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px"}}>
-
-            <p style={{margin: 0, fontWeight: "bold", color: "gray",}}>{label}</p>
+          >
+            <p style={{ margin: 0, fontWeight: "bold", color: "gray" }}>{label}</p>
             <p style={{ margin: 0, color: "gray" }}>{value}</p>
-
           </div>
         ))}
 
-        <br></br>
-        <br></br>
+        <br /><br />
 
-        <GerarBotao cor={0} label="Editar Perfil" className="px-32 py-2" to="/editar-perfil"/>
+        <GerarBotao cor={0} label="Editar Perfil" className="px-32 py-2" to="/editar-perfil" />
 
-        <br></br>
-        <br></br>
-
+        <br /><br />
       </div>
 
-        <Footer />
-      
+      <Footer />
     </>
   );
 }

@@ -17,15 +17,41 @@ function PerfilEditar() {
       <br /><br />
 
       <style>{`
+        .perfil-container {
+          width: 30%;
+          height: auto;
+          background-color: white;
+          text-align: center;
+          margin: 10% auto;
+          border-radius: 10px;
+          padding: 20px;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .perfil-row {
+          margin-bottom: 20px;
+          text-align: left;
+        }
+
+        .botoes {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 10px;
+        }
+
         @media (max-width: 600px) {
           .perfil-container {
             width: 90% !important;
             margin: 5% auto !important;
             padding: 15px !important;
           }
+
           .perfil-row {
             margin-bottom: 6px !important;
           }
+
           .botoes {
             flex-direction: column-reverse !important;
             gap: 10px !important;
@@ -33,19 +59,7 @@ function PerfilEditar() {
         }
       `}</style>
 
-      <div
-        className="perfil-container"
-        style={{
-          width: "30%",
-          height: "auto",
-          backgroundColor: "white",
-          textAlign: "center",
-          margin: "10% auto",
-          borderRadius: "10px",
-          padding: "20px",
-          boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
-        }}
-      >
+      <div className="perfil-container">
         <h1
           style={{
             textAlign: "center",
@@ -59,7 +73,7 @@ function PerfilEditar() {
 
         <br />
 
-        <div className="perfil-row" style={{ marginBottom: "20px", textAlign: "left" }}>
+        <div className="perfil-row">
           <InputField
             label="Nome:"
             value={nome}
@@ -69,7 +83,7 @@ function PerfilEditar() {
           />
         </div>
 
-        <div className="perfil-row" style={{ marginBottom: "20px", textAlign: "left" }}>
+        <div className="perfil-row">
           <InputField
             label="Email:"
             value={email}
@@ -79,7 +93,7 @@ function PerfilEditar() {
           />
         </div>
 
-        <div className="perfil-row" style={{ marginBottom: "20px", textAlign: "left" }}>
+        <div className="perfil-row">
           <InputField
             label="Telefone:"
             value={telefone}
@@ -89,7 +103,7 @@ function PerfilEditar() {
           />
         </div>
 
-        <div className="perfil-row" style={{ marginBottom: "20px", textAlign: "left" }}>
+        <div className="perfil-row">
           <InputField
             label="Endereço:"
             value={endereco}
@@ -99,16 +113,7 @@ function PerfilEditar() {
           />
         </div>
 
-        <div
-          className="botoes"
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            gap: "10px",
-            marginBottom: "10px",  
-          }}
-        >
+        <div className="botoes">
           <GerarBotao
             cor={0}
             label="Voltar"

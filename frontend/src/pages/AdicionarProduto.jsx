@@ -24,8 +24,8 @@ function AdicionarProduto() {
 
     const handleSalvar = () => {
        
-        if (!produto.id || !produto.titulo || !produto.preco) {
-            alert('Preencha os campos obrigatórios: ID, Título e Preço.');
+        if (!produto.titulo || !produto.preco) {
+            alert('Preencha os campos obrigatórios: Título e Preço.');
             return;
         }
 
