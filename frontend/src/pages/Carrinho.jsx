@@ -9,8 +9,12 @@ const Carrinho = ({ carrinho, setCarrinho, logado }) => {
   const navigate = useNavigate();
 
   const handleRemove = (id) => {
-    const novoCarrinho = carrinho.filter(item => item.id !== id);
-    setCarrinho(novoCarrinho);
+    const index = carrinho.findIndex(item => item.id === id);
+    if (index !== -1) {
+      const novoCarrinho = [...carrinho];
+      novoCarrinho.splice(index, 1);
+      setCarrinho(novoCarrinho);
+    }
   };
 
   const handleFinalizarCompra = () => {
