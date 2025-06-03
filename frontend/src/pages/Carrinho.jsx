@@ -63,6 +63,7 @@ const Carrinho = ({ carrinho, setCarrinho, logado }) => {
           )}
         </div>
       </div>
+
       <Footer />
     </>
   );

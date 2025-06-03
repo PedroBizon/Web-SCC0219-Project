@@ -1,11 +1,14 @@
 // src/components/BookCard/BookCard.jsx
 import GerarBotao from '../Botao/Botao';
 import './BookCard.css';
+import { useNavigate } from 'react-router-dom';
 
 function BookCard({ livro, carrinho, setCarrinho }) {
+  const navigate = useNavigate();
+
   const handleAdd = () => {
-    // Adiciona o objeto inteiro 'livro' ao state 'carrinho'
     setCarrinho([...carrinho, livro]);
+    alert("Produto adicionado ao carrinho"); 
   };
 
   return (
