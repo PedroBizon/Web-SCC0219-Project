@@ -20,7 +20,7 @@ import CompraSucesso from './pages/CompraSucesso';
 function App() {
   
   const [logado, setLogado] = useState(false);
-
+  const [usuarioLogado, setUsuarioLogado] = useState(null);
   const[carrinho, setCarrinho] = useState([]);
 
   let livros = [
@@ -140,11 +140,12 @@ function App() {
             carrinho={carrinho}
             logado={logado}  
             setCarrinho={setCarrinho}/>} />
-          <Route path="/perfil" element={<DadosPerfil />} />
+          <Route path="/perfil" element={<DadosPerfil usuario={usuarioLogado} logado={logado} />} />
           <Route path="/editar" element={<EditarProduto />} />
           <Route path="/finalizar" element={<FinalizarCompra />} />
           <Route path="/login" element={<Login 
-            setLogado={setLogado} 
+            setLogado={setLogado}
+            setUsuarioLogado={setUsuarioLogado} 
             usuarios={usuarios}/>} />
           <Route path="/" element={<PrincipalUsuario 
             livros={livros}

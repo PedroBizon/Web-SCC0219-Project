@@ -16,6 +16,7 @@ const Login = (props) => {
 
     if (usuario) {
       props.setLogado(true);
+      props.setUsuarioLogado(usuario);
 
       if (usuario.admin === true || usuario.admin === 'true') {
         navigate('/admin');

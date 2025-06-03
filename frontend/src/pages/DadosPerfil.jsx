@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar/Navbar";
 import GerarBotao from "../components/Botao/Botao";
 import Footer from "../components/Footer/Footer";
 
-function DadosPerfil() {
+function DadosPerfil({ usuario }) {
   return (
     <>
       <Navbar logado={true} />
@@ -68,10 +68,10 @@ function DadosPerfil() {
         <br />
 
         {[
-          { label: "Nome:", value: "Maria da Silva" },
-          { label: "Email:", value: "maria@email.com" },
-          { label: "Telefone:", value: "(11) 91234-5678" },
-          { label: "Endereço:", value: "Rua das Flores, 123 - São Paulo" },
+          { label: "Nome:",  value: usuario?.nome || "Não informado"  },
+          { label: "Email:", value: usuario?.email || "Não informado" },
+          { label: "Telefone:", value: usuario?.telefone || "Não informado" },
+          { label: "Endereço:", value: usuario?.endereco || "Não informado" },
         ].map(({ label, value }) => (
           <div
             key={label}
