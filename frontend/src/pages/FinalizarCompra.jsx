@@ -1,17 +1,21 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import InputField from "../components/InputField/InputField";
 import GerarBotao from "../components/Botao/Botao";
 import Footer from "../components/Footer/Footer";
 
-function FinalizarCompra() {
+function FinalizarCompra({ setCarrinho }) {
     const location = useLocation();
+    const navigate = useNavigate();
     const carrinho = location.state?.carrinho || [];
 
     const subtotal = carrinho.reduce((sum, item) => sum + parseFloat(item.preco), 0);
     const frete = 10.00;
     const total = subtotal + frete;
-    
+
+    const handleFinalizar = () => {
+        setCarrinho([]);  
+    };
 
     return (
         <>
@@ -88,8 +92,8 @@ function FinalizarCompra() {
                             {carrinho.length === 0 ? (
                                 <p>Carrinho vazio.</p>
                             ) : (
-                                carrinho.map((item) => (
-                                    <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                carrinho.map((item, index) => (
+                                    <div key={index} style={{ display: 'flex', justifyContent: 'space-between' }}>
                                         <p style={{ fontWeight: 'bold' }}>{item.nome}</p>
                                         <p style={{ fontWeight: 'bold' }}>R$ {parseFloat(item.preco).toFixed(2).replace('.', ',')}</p>
                                     </div>
@@ -97,7 +101,6 @@ function FinalizarCompra() {
                             )}
                         </div>
 
-                        {/* Subtotal e Frete */}
                         <div className="resumo-bloco" style={{
                             display: 'flex',
                             flexDirection: 'column',
@@ -115,7 +118,6 @@ function FinalizarCompra() {
                             </div>
                         </div>
 
-                        {/* Total */}
                         <div className="resumo-bloco" style={{
                             display: 'flex',
                             flexDirection: 'column',
@@ -130,7 +132,7 @@ function FinalizarCompra() {
                         </div>
 
                         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                            <GerarBotao cor={0} label="Finalizar Compra" className="px-8 py-4" to="/compra-sucesso" />
+                            <GerarBotao cor={0} label="Finalizar Compra" className="px-8 py-4" to="/compra-sucesso" onClick={handleFinalizar} />
                         </div>
                     </div>
                 </div>

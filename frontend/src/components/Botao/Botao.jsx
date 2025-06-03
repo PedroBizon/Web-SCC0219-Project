@@ -9,6 +9,7 @@ function GerarBotao({ cor, label, onClick, className, to }) {
     return (
       <Link
         to={to}
+        onClick={onClick}
         className={`${colors[cor]} text-white font-medium rounded-lg justify-center ${className} px-4 py-2 inline-block text-center`}
       >
         {label}
