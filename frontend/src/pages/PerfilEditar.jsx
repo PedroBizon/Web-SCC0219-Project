@@ -4,12 +4,24 @@ import GerarBotao from "../components/Botao/Botao";
 import Footer from "../components/Footer/Footer";
 import InputField from "../components/InputField/InputField";
 
-function PerfilEditar() {
-  const [nome, setNome] = useState("Maria da Silva");
-  const [email, setEmail] = useState("maria@email.com");
-  const [telefone, setTelefone] = useState("(11) 91234-5678");
-  const [endereco, setEndereco] = useState("Rua das Flores, 123 - São Paulo");
+function PerfilEditar({ usuario, setUsuarioLogado }) {
+  const [nome, setNome] = useState(usuario?.nome || "");
+  const [email, setEmail] = useState(usuario?.email || "");
+  const [telefone, setTelefone] = useState(usuario?.telefone || "");
+  const [endereco, setEndereco] = useState(usuario?.endereco || "");
 
+  const handleSalvar = () => {
+    const atualizado = {
+      ...usuario,
+      nome,
+      email,
+      telefone,
+      endereco
+    };
+
+    setUsuarioLogado(atualizado);
+    alert("Dados atualizados com sucesso!");
+  };
   return (
     <>
       <Navbar logado={true} />
@@ -125,7 +137,7 @@ function PerfilEditar() {
             cor={0}
             label="Editar Perfil"
             className="px-8 py-2"
-            to="/perfil"
+            onClick={handleSalvar}
           />
         </div>
       </div>

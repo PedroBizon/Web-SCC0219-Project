@@ -154,7 +154,9 @@ function App() {
             setCarrinho={setCarrinho}/>} />
           <Route path="/admin" element={<VendasEstoque livros={livros}/>} />
           <Route path="/visualizar" element={<VisualizarProduto />} />
-          <Route path="/editar-perfil" element={<PerfilEditar />} />
+          <Route path="/editar-perfil" element={ <PerfilEditar
+            usuario={usuarioLogado}
+            setUsuarioLogado={setUsuarioLogado}/>}/>
           <Route path="/compra-sucesso" element={<CompraSucesso />} />
         </Routes>
       </Router>
