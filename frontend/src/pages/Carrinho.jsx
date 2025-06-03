@@ -1,4 +1,3 @@
-// src/pages/Carrinho.jsx
 import React from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
@@ -16,7 +15,7 @@ const Carrinho = ({ carrinho, setCarrinho, logado }) => {
 
   const handleFinalizarCompra = () => {
     if (logado) {
-      navigate("/finalizar");
+      navigate("/finalizar", { state: { carrinho } });
     } else {
       navigate("/login");
     }
@@ -63,7 +62,6 @@ const Carrinho = ({ carrinho, setCarrinho, logado }) => {
           )}
         </div>
       </div>
-
       <Footer />
     </>
   );

@@ -1,9 +1,18 @@
+import { useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import InputField from "../components/InputField/InputField";
 import GerarBotao from "../components/Botao/Botao";
 import Footer from "../components/Footer/Footer";
 
 function FinalizarCompra() {
+    const location = useLocation();
+    const carrinho = location.state?.carrinho || [];
+
+    const subtotal = carrinho.reduce((sum, item) => sum + parseFloat(item.preco), 0);
+    const frete = 10.00;
+    const total = subtotal + frete;
+    
+
     return (
         <>
             <Navbar logado={true}></Navbar>
@@ -13,7 +22,6 @@ function FinalizarCompra() {
             <div style={{
                 width: '90%',
                 maxWidth: '1000px',
-                height: 'auto',
                 backgroundColor: 'white',
                 textAlign: 'center',
                 margin: '50px auto',
@@ -61,7 +69,13 @@ function FinalizarCompra() {
                         </div>
                     </div>
 
-                    <div className="resumo-pedido" style={{ textAlign: 'left', flex: '1', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                    <div className="resumo-pedido" style={{
+                        textAlign: 'left',
+                        flex: '1',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '20px'
+                    }}>
                         <h1 style={{ fontWeight: 'bold', fontSize: '20px' }}>Resumo do Pedido</h1>
 
                         <div className="resumo-bloco" style={{
@@ -71,20 +85,19 @@ function FinalizarCompra() {
                             borderBottom: "1px solid lightgray",
                             paddingBottom: "10px"
                         }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <p style={{ fontWeight: 'bold' }}>Livro Exemplo 1</p>
-                                <p style={{ fontWeight: 'bold' }}>R$ 49,99</p>
-                            </div>
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <p style={{ fontWeight: 'bold' }}>Livro Exemplo 2</p>
-                                <p style={{ fontWeight: 'bold' }}>R$ 79,99</p>
-                            </div>
-                            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <p style={{ fontWeight: 'bold' }}>Livro Exemplo 3</p>
-                                <p style={{ fontWeight: 'bold' }}>R$ 29,99</p>
-                            </div>
+                            {carrinho.length === 0 ? (
+                                <p>Carrinho vazio.</p>
+                            ) : (
+                                carrinho.map((item) => (
+                                    <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        <p style={{ fontWeight: 'bold' }}>{item.nome}</p>
+                                        <p style={{ fontWeight: 'bold' }}>R$ {parseFloat(item.preco).toFixed(2).replace('.', ',')}</p>
+                                    </div>
+                                ))
+                            )}
                         </div>
 
+                        {/* Subtotal e Frete */}
                         <div className="resumo-bloco" style={{
                             display: 'flex',
                             flexDirection: 'column',
@@ -94,14 +107,15 @@ function FinalizarCompra() {
                         }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                 <p style={{ fontWeight: 'bold' }}>Subtotal</p>
-                                <p style={{ fontWeight: 'bold' }}>R$ 159,97</p>
+                                <p style={{ fontWeight: 'bold' }}>R$ {subtotal.toFixed(2).replace('.', ',')}</p>
                             </div>
                             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                 <p style={{ fontWeight: 'bold' }}>Frete</p>
-                                <p style={{ fontWeight: 'bold' }}>R$ 10,00</p>
+                                <p style={{ fontWeight: 'bold' }}>R$ {frete.toFixed(2).replace('.', ',')}</p>
                             </div>
                         </div>
 
+                        {/* Total */}
                         <div className="resumo-bloco" style={{
                             display: 'flex',
                             flexDirection: 'column',
@@ -111,12 +125,12 @@ function FinalizarCompra() {
                         }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                                 <p style={{ fontWeight: 'bold' }}>Total</p>
-                                <p style={{ fontWeight: 'bold' }}>R$ 169,97</p>
+                                <p style={{ fontWeight: 'bold' }}>R$ {total.toFixed(2).replace('.', ',')}</p>
                             </div>
                         </div>
 
                         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                            <GerarBotao cor={0} label="Finalizar Compra" className="px-8 py-4" to = "/compra-sucesso"/>
+                            <GerarBotao cor={0} label="Finalizar Compra" className="px-8 py-4" to="/compra-sucesso" />
                         </div>
                     </div>
                 </div>
@@ -154,7 +168,6 @@ function FinalizarCompra() {
             </style>
 
             <Footer />
-
         </>
     )
 }
