@@ -3,10 +3,13 @@ import InputField from "../components/InputField/InputField";
 import GerarBotao from "../components/Botao/Botao";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useEstoque } from "../hooks/useEstoque";
 
 function EditarProduto() {
     const location = useLocation();
     const navigate = useNavigate();
+
+    const { editarProduto } = useEstoque();
 
     const produto = location.state?.produto;
 
@@ -17,28 +20,27 @@ function EditarProduto() {
     const [estoque, setEstoque] = useState('');
     const [descricao, setDescricao] = useState('');
 
-useEffect(() => {
-    if (produto) {
-        setTitulo(produto.titulo);
-        setIdProduto(produto.id);
-        setPreco(produto.preco);
-        setEstoque(produto.quantidade);
-        setAutor(produto.autor);
-        setDescricao(produto.descricao);
-    }
-}, [produto]);
-
+    useEffect(() => {
+        if (produto) {
+            setTitulo(produto.titulo);
+            setIdProduto(produto.id);
+            setPreco(produto.preco.toString().replace('R$ ', ''));  // remove R$
+            setEstoque(produto.estoque ?? produto.quantidade ?? ''); // pega estoque correto
+            setAutor(produto.autor);
+            setDescricao(produto.descricao);
+        }
+    }, [produto]);
 
     const handleSalvar = () => {
-        console.log({
+        const novosDados = {
             titulo,
             autor,
-            idProduto,
             preco,
             estoque,
             descricao
-        });
-        navigate('/estoque-vendas');
+        };
+        editarProduto(idProduto, novosDados);
+        navigate('/admin');
     };
 
     return (
@@ -122,7 +124,7 @@ useEffect(() => {
                         cor={2}
                         label="Voltar"
                         className="px-4 py-2"
-                        to="/estoque-vendas"
+                        to="/admin"
                     />
                     <GerarBotao
                         cor={0}

@@ -5,9 +5,11 @@ import EstoqueHeader from "../components/EstoqueHeader/EstoqueHeader";
 import EstoqueItem from "../components/EstoqueItem/EstoqueItem";
 import GerarBotao from "../components/Botao/Botao";
 import { useEstoque } from "../hooks/useEstoque";
+import { useNavigate } from "react-router-dom";
 
-const VendasEstoque = (props) => {
+const VendasEstoque = () => {
     const { estoque, removerProduto } = useEstoque(); 
+    const navigate = useNavigate();
 
     return (
         <>
@@ -71,9 +73,9 @@ const VendasEstoque = (props) => {
                         <EstoqueItem
                             key={livro.id}
                             id={livro.id}
-                            titulo={livro.nome}
+                            titulo={livro.titulo}
                             quantidade={livro.estoque}
-                            preco={`R$ ${livro.preco}`}
+                            preco={`R$ ${Number(livro.preco).toFixed(2)}`} 
                             autor={livro.autor}
                             descricao={livro.descricao}
                             onDelete={() => {
@@ -81,9 +83,11 @@ const VendasEstoque = (props) => {
                                     removerProduto(livro.id);
                                 }
                             }}
+                            onEdit={() => {
+                                navigate('/editar-produto', { state: { produto: livro } });
+                            }}
                         />
-                    ))} 
-
+                    ))}
                 </div>
 
                 <br /><br />
@@ -97,6 +101,6 @@ const VendasEstoque = (props) => {
             </div>
         </>
     );
-}
+};
 
 export default VendasEstoque;

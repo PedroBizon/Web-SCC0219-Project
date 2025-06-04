@@ -6,7 +6,7 @@ import GerarBotao from "../components/Botao/Botao";
 import { useEstoque } from "../hooks/useEstoque";
 
 function AdicionarProduto() {
-    const { adicionarProduto } = useEstoque();
+    const { adicionarProduto, estoque } = useEstoque();
     const navigate = useNavigate();
 
     const [produto, setProduto] = useState({
@@ -23,21 +23,24 @@ function AdicionarProduto() {
     };
 
     const handleSalvar = () => {
-       
         if (!produto.titulo || !produto.preco) {
             alert('Preencha os campos obrigatórios: Título e Preço.');
             return;
         }
 
+        const proximoId = estoque.length > 0
+            ? Math.max(...estoque.map(p => parseInt(p.id, 10))) + 1
+            : 1;
+
         const novoProduto = {
             ...produto,
+            id: proximoId,
             preco: parseFloat(produto.preco).toFixed(2),
             estoque: parseInt(produto.estoque, 10)
         };
 
         adicionarProduto(novoProduto);
-
-        navigate('/estoque-vendas');
+        navigate('/admin');
     };
 
     return (
@@ -130,7 +133,7 @@ function AdicionarProduto() {
                         cor={2}
                         label="Voltar"
                         className="px-4 py-2"
-                        to="/estoque-vendas"
+                        to="/admin"
                     />
 
                     <GerarBotao
