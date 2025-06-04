@@ -22,7 +22,7 @@ function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
   const [carrinho, setCarrinho] = useState([]);
 
-  // Agora "livros" é um estado dinâmico em vez de um array fixo
+  // "livros" continua sendo um estado dinâmico
   const [livros, setLivros] = useState([
     {
       id: "001",
@@ -99,7 +99,8 @@ function App() {
     }
   ]);
 
-  let usuarios = [
+  // Agora "usuarios" vira estado para que possamos adicionar/excluir dinamicamente
+  const [usuarios, setUsuarios] = useState([
     {
       id: "001",
       nome: "admin",
@@ -126,7 +127,7 @@ function App() {
       email: "arthur@email.com",
       admin: "false"
     }
-  ];
+  ]);
 
   return (
     <Router>
@@ -170,6 +171,7 @@ function App() {
             />
           }
         />
+
         {/* ------------------- ROTAS ADMINISTRATIVAS ------------------- */}
         <Route
           path="/admin"
@@ -192,12 +194,24 @@ function App() {
             <EditarProduto livros={livros} setLivros={setLivros} />
           }
         />
+        <Route
+          path="/administrar-clientes"
+          element={
+            <AdminCliente
+              usuarios={usuarios}
+              setUsuarios={setUsuarios}
+            />
+          }
+        />
+        <Route
+          path="/registrar-admin"
+          element={<AdminRegistro />}
+        />
+
         {/* -------------------- OUTRAS ROTAS -------------------- */}
         <Route path="/visualizar" element={<VisualizarProduto />} />
         <Route path="/finalizar" element={<FinalizarCompra />} />
         <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/administrar-clientes" element={<AdminCliente />} />
-        <Route path="/registrar-admin" element={<AdminRegistro />} />
         <Route path="/compra-sucesso" element={<CompraSucesso />} />
       </Routes>
     </Router>

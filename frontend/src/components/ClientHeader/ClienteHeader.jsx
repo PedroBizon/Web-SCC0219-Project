@@ -1,16 +1,23 @@
-import React from 'react';
-import './ClientHeader.css';
-
-const ClientHeader = () => {
+function ClientHeader() {
   return (
-    <div className="client-header">
-      <div className="header-col id">ID</div>
-      <div className="header-col nome">Nome</div>
-      <div className="header-col telefone">Telefone</div>
-      <div className="header-col email">Email</div>
-      <div className="header-col acao"></div>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 2fr 2fr 3fr 1fr", // ID, Nome, Telefone, Email, Ações
+        gap: "10px",
+        fontWeight: "bold",
+        paddingBottom: "10px",
+        borderBottom: "2px solid #ccc",
+        textAlign: "left",
+      }}
+    >
+      <span>ID</span>
+      <span>Nome</span>
+      <span>Telefone</span>
+      <span>Email</span>
+      <span>Ações</span>
     </div>
-  )
+  );
 }
 
 export default ClientHeader;
