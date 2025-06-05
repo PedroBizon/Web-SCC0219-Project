@@ -22,7 +22,6 @@ function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
   const [carrinho, setCarrinho] = useState([]);
 
-  // "livros" continua sendo um estado dinâmico
   const [livros, setLivros] = useState([
     {
       id: "001",
@@ -94,12 +93,11 @@ function App() {
       preco: "579.00",
       estoque: "16",
       descricao:
-        "Este livro apresenta um texto abrangente sobre o moderno estudo de algoritmos para computadores. É uma obra clássica, cuja primeira edição tornou-se amplamente adotada nas melhores universidades em todo o mundo, bem como padrão de referência para profissionais da área. Nesta terceira edição, totalmente revista e ampliada, as mudanças são extensivas e incluem novos capítulos, exercícios e problemas; revisão de pseudocódigos e um estilo de redação mais claro.",
+        "Este livro apresenta um texto abrangente sobre o moderno estudo de algoritmos para computadores...",
       foto: "/imagens/introduction_to_algorithms.jpg"
     }
   ]);
 
-  // Agora "usuarios" vira estado para que possamos adicionar/excluir dinamicamente
   const [usuarios, setUsuarios] = useState([
     {
       id: "001",
@@ -132,7 +130,6 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/*----------------------- ROTAS BÁSICAS -----------------------*/}
         <Route
           path="/"
           element={
@@ -205,7 +202,12 @@ function App() {
         />
         <Route
           path="/registrar-admin"
-          element={<AdminRegistro />}
+          element={
+            <AdminRegistro
+              usuarios={usuarios}
+              setUsuarios={setUsuarios}
+            />
+          }
         />
 
         {/* -------------------- OUTRAS ROTAS -------------------- */}
