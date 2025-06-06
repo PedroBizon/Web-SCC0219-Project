@@ -77,9 +77,13 @@ npm install
 npm run dev
 ```
 #Para logar e testar o cliente:
+
 email: pedro@email.com
+
 senha: Pedro
 
 #Para logar e testar admin:
+
 email: admin@email.com
+
 senha: admin
