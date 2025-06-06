@@ -23,16 +23,6 @@ O sistema possui dois tipos de usuário:
 - Gerenciamento (CRUD) de produtos/serviços por administradores.
 - Funcionalidade específica: O cliente clica o botão "Aleatório" no cabeçalho da página e é redirecionado para um livro aleatório.
 
----
-
-## Descrição do Projeto
-
-Aplicação online para uma loja de livros com:
-
-- Cadastro/Login
-- Carrinho de compras
-- Checkout
-- Área administrativa para gerenciar produtos e clientes
 
 ---
 
@@ -47,3 +37,42 @@ Aplicação online para uma loja de livros com:
 [Link para o Figma](https://www.figma.com/design/KCJOQ1HRQr8NRWqZ0fCD8N/Trabalho-1-Web?node-id=0-1&p=f&t=Ws5Fnwljwq0gYktq-0)
 
 ---
+
+## Descrição do Projeto
+
+Aplicação online para uma loja de livros com adminstradores e clientes:
+
+Ações disponíveis para administradores:
+- Área administrativa para gerenciar produtos e estoque;
+- Área administrativa para gerenciar clientes;
+- Criação de usuários do tipo administrador;
+- Relatório de vendas;
+- Editar produtos;
+
+Ações disponíveis para clientes:
+- Cadastrar e logar em uma conta;
+- Buscar livros pelo título ou nome do autor;
+- Colocar e remover itens do carrinho;
+- Efetuar a compra dos itens do carrinho;
+- Alterar os dados da sua conta;
+
+---
+
+## Planos de teste
+
+Para testar o backend, usaremos o software Insomnia, que testa as operações do HTTP.
+Já para testar o frontend, estamos usando o VITE.
+
+---
+
+## Instalação e execução
+
+Clone o repositório.
+Frontend (localhost:5173):
+- Estamos usando React + Vite + tailwindcss
+```bash
+npm install
+```
+```bash
+npm run dev
+```
