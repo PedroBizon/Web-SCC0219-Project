@@ -1,12 +1,26 @@
+import { useLocation, useNavigate } from 'react-router-dom';
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import GerarBotao from "../components/Botao/Botao";
 
-const VisualizarProduto = (props) => {
+const VisualizarProduto = ({ carrinho, setCarrinho, logado }) => {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { livro } = location.state || {};
+
+    if (!livro) {
+        navigate("/");
+        return null;
+    }
+
+    const handleAddToCart = () => {
+        setCarrinho([...carrinho, livro]);
+        alert("Produto adicionado ao carrinho");
+    };
+
     return (
         <>
-            <Navbar logado></Navbar>
-
+            <Navbar logado={logado} />
             <br /><br />
 
             <div style={{
@@ -19,13 +33,12 @@ const VisualizarProduto = (props) => {
                 padding: '20px',
                 boxShadow: '0 4px 8px rgba(0,0,0,0.1)'
             }}>
-
                 <h1 style={{
                     textAlign: 'center',
                     fontWeight: 'bold',
                     fontSize: '25px',
                     color: '#2E86AB'
-                }}>Livro Exemplo 1</h1>
+                }}>{livro.nome}</h1>
 
                 <br />
 
@@ -35,12 +48,14 @@ const VisualizarProduto = (props) => {
                     gap: '10px',
                     margin: '20px 0'
                 }}>
-
                     <div className="produto-imagem" style={{
                         width: '400px',
                         height: '550px',
                         backgroundColor: '#ccc',
-                        marginLeft: '5%'
+                        marginLeft: '5%',
+                        backgroundImage: `url(${livro.foto || ''})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center'
                     }}></div>
 
                     <div className="produto-info" style={{
@@ -50,7 +65,6 @@ const VisualizarProduto = (props) => {
                         flexDirection: 'column',
                         gap: '50px'
                     }}>
-
                         <div className="info-bloco" style={{
                             display: 'flex',
                             justifyContent: 'space-between',
@@ -60,7 +74,7 @@ const VisualizarProduto = (props) => {
                             marginBottom: '10px'
                         }}>
                             <p style={{ color: 'gray', fontWeight: 'bold' }}>Título</p>
-                            <p style={{ color: 'gray' }}>Exemplo 1</p>
+                            <p style={{ color: 'gray' }}>{livro.nome}</p>
                         </div>
 
                         <div className="info-bloco" style={{
@@ -72,7 +86,7 @@ const VisualizarProduto = (props) => {
                             marginBottom: '10px'
                         }}>
                             <p style={{ color: 'gray', fontWeight: 'bold' }}>Autor</p>
-                            <p style={{ color: 'gray' }}>Autor Exemplo 1</p>
+                            <p style={{ color: 'gray' }}>{livro.autor}</p>
                         </div>
 
                         <div className="info-bloco" style={{
@@ -84,7 +98,7 @@ const VisualizarProduto = (props) => {
                             marginBottom: '10px'
                         }}>
                             <p style={{ color: 'gray', fontWeight: 'bold' }}>Preço</p>
-                            <p style={{ color: 'gray' }}>Preço Exemplo 1</p>
+                            <p style={{ color: 'gray' }}>R$ {livro.preco}</p>
                         </div>
 
                         <div className="info-bloco" style={{
@@ -98,11 +112,8 @@ const VisualizarProduto = (props) => {
                         }}>
                             <p style={{ color: 'gray', fontWeight: 'bold' }}>Descrição</p>
                             <br />
-                            <p style={{ color: 'gray', textAlign: 'justify' }}>
-                                Este é um livro de exemplo com uma descrição longa que ocupa toda a largura disponível.
-                            </p>
+                            <p style={{ color: 'gray', textAlign: 'justify' }}>{livro.descricao}</p>
                         </div>
-
                     </div>
                 </div>
 
@@ -114,7 +125,6 @@ const VisualizarProduto = (props) => {
                     alignItems: 'center',
                     margin: '0 10%'
                 }}>
-        
                     <GerarBotao
                         cor={0}
                         label="Voltar"
@@ -126,6 +136,7 @@ const VisualizarProduto = (props) => {
                         cor={0}
                         label="Adicionar ao Carrinho"
                         className="botao-produto px-8 py-4"
+                        onClick={handleAddToCart}
                     />
                 </div>
 
@@ -176,10 +187,9 @@ const VisualizarProduto = (props) => {
                 `}
             </style>
 
-            <Footer/>
-
+            <Footer />
         </>
     );
-}
+};
 
 export default VisualizarProduto;

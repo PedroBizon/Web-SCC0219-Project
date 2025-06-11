@@ -193,10 +193,10 @@ function App() {
           }
         />
         {/* -------------------- OUTRAS ROTAS -------------------- */}
-        <Route path="/visualizar" element={<VisualizarProduto />} />
+        <Route path="/visualizar" element={<VisualizarProduto carrinho={carrinho} setCarrinho={setCarrinho} logado={logado}/>} />
         <Route path="/finalizar" element={<FinalizarCompra />} />
         <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/administrar-clientes" element={<AdminCliente />} />
+        <Route path="/administrar-clientes" element={<AdminCliente usuarios={usuarios}/>} />
         <Route path="/registrar-admin" element={<AdminRegistro />} />
         <Route path="/compra-sucesso" element={<CompraSucesso />} />
       </Routes>
