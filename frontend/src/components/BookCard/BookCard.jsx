@@ -8,12 +8,16 @@ function BookCard({ livro, carrinho, setCarrinho }) {
 
   const handleAdd = () => {
     setCarrinho([...carrinho, livro]);
-    alert("Produto adicionado ao carrinho"); 
+    alert("Produto adicionado ao carrinho");
+  };
+
+  const handleImageClick = () => {
+    navigate("/visualizar", { state: { livro } });
   };
 
   return (
     <div className="book-card">
-      <div className="book-image-placeholder">
+      <div className="book-image-placeholder" onClick={handleImageClick} style={{ cursor: 'pointer' }}>
         <img src={livro.foto} alt={livro.nome} />
       </div>
       <h3 className="book-title">{livro.nome}</h3>
