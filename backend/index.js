@@ -1,6 +1,13 @@
+const Usuario = require('./models/Usuario');
+const Produto = require('./models/Produto');
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const rotasProdutos = require('./routes/produtos');
+app.use('/produtos', rotasProdutos);
+const rotasUsuarios = require('./routes/usuarios');
+app.use('/usuarios', rotasUsuarios);
+
 
 const app = express();
 app.use(express.json());
