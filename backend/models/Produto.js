@@ -6,6 +6,7 @@ const ProdutoSchema = new mongoose.Schema({
   autor: {type: String, required: true},
   preco: {type: Number, required: true},
   estoque: {type: Number, default: 0},
+  imagem: {type: String},
   descricao: {type: String}
 });
 

@@ -4,7 +4,7 @@ const Usuario = require('../models/Usuario');
 
 // Cadastro simples de usuário (POST /usuarios)
 router.post('/', async (req, res) => {
-  const { nome, email, senha, tipo } = req.body;
+  const { id, nome, email, senha, telefone, tipo } = req.body;
 
   try {
     const existente = await Usuario.findOne({ email });
@@ -13,9 +13,11 @@ router.post('/', async (req, res) => {
     }
 
     const novoUsuario = await Usuario.create({
+      id,
       nome,
       email,
       senha,
+      telefone,
       tipo: tipo || 'cliente'
     });
 
@@ -26,7 +28,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Login sem encriptação (POST /usuarios/login)
+// Login (POST /usuarios/login)
 router.post('/login', async (req, res) => {
   const { email, senha } = req.body;
 
