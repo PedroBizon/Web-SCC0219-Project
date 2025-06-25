@@ -59,4 +59,32 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+// Diminuir estoque (PATCH /produtos/:id/diminuir)
+router.patch('/:id/diminuir', async (req, res) => {
+  const { quantidade } = req.body;
+
+  if (quantidade == null || quantidade <= 0) {
+    return res.status(400).json({ erro: 'Quantidade inválida. Deve ser maior que zero.' });
+  }
+
+  try {
+    const produto = await Produto.findById(req.params.id);
+    if (!produto) {
+      return res.status(404).json({ erro: 'Produto não encontrado.' });
+    }
+
+    if (produto.estoque < quantidade) {
+      return res.status(400).json({ erro: 'Estoque insuficiente.' });
+    }
+
+    produto.estoque -= quantidade;
+    await produto.save();
+
+    res.json({ mensagem: 'Estoque atualizado com sucesso.', produto });
+  } catch (err) {
+    res.status(500).json({ erro: err.message });
+  }
+});
+
+
 module.exports = router;

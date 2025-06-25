@@ -7,13 +7,11 @@ router.post('/', async (req, res) => {
   const { nome, email, senha, tipo } = req.body;
 
   try {
-    // Verifica se o email já existe
     const existente = await Usuario.findOne({ email });
     if (existente) {
       return res.status(400).json({ erro: 'Email já cadastrado' });
     }
 
-    // Cria o usuário sem encriptar a senha
     const novoUsuario = await Usuario.create({
       nome,
       email,
@@ -21,16 +19,12 @@ router.post('/', async (req, res) => {
       tipo: tipo || 'cliente'
     });
 
-    // Oculta a senha na resposta (opcional)
     const usuarioSemSenha = { ...novoUsuario.toObject(), senha: undefined };
-
     res.status(201).json(usuarioSemSenha);
   } catch (err) {
     res.status(500).json({ erro: 'Erro ao cadastrar usuário' });
   }
 });
-
-module.exports = router;
 
 // Login sem encriptação (POST /usuarios/login)
 router.post('/login', async (req, res) => {
@@ -43,12 +37,10 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ erro: 'Usuário não encontrado' });
     }
 
-    // Comparação direta da senha (sem bcrypt)
     if (usuario.senha !== senha) {
       return res.status(401).json({ erro: 'Senha incorreta' });
     }
 
-    // Resposta básica de login
     res.json({
       mensagem: 'Login bem-sucedido',
       usuario: {
@@ -81,9 +73,50 @@ router.post('/admin', async (req, res) => {
     });
 
     const adminSemSenha = { ...novoAdmin.toObject(), senha: undefined };
-
     res.status(201).json(adminSemSenha);
   } catch (err) {
     res.status(500).json({ erro: 'Erro ao cadastrar admin' });
   }
 });
+
+// Listar todos usuários (GET /usuarios)
+router.get('/', async (req, res) => {
+  try {
+    const usuarios = await Usuario.find();
+    res.json(usuarios);
+  } catch (err) {
+    res.status(500).json({ erro: err.message });
+  }
+});
+
+// Editar usuário pelo ID (PUT /usuarios/:id)
+router.put('/:id', async (req, res) => {
+  try {
+    const usuarioAtualizado = await Usuario.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    if (!usuarioAtualizado) {
+      return res.status(404).json({ erro: 'Usuário não encontrado' });
+    }
+    res.json(usuarioAtualizado);
+  } catch (err) {
+    res.status(500).json({ erro: err.message });
+  }
+});
+
+// Apagar usuário pelo ID (DELETE /usuarios/:id)
+router.delete('/:id', async (req, res) => {
+  try {
+    const usuarioRemovido = await Usuario.findByIdAndDelete(req.params.id);
+    if (!usuarioRemovido) {
+      return res.status(404).json({ erro: 'Usuário não encontrado' });
+    }
+    res.json({ mensagem: 'Usuário removido com sucesso' });
+  } catch (err) {
+    res.status(500).json({ erro: err.message });
+  }
+});
+
+module.exports = router;
