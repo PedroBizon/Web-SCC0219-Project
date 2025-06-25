@@ -2,32 +2,33 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-// Models
-const Usuario = require('./models/Usuario');
-const Produto = require('./models/Produto');
-
 // Rotas
-const rotasProdutos = require('./routes/produtos');
-const rotasUsuarios = require('./routes/usuarios');
+const usuariosRoutes = require('./routes/usuarios');
+const produtosRoutes = require('./routes/produtos');
 
-// Inicialização do app
 const app = express();
-const PORT = 3001;
 
 // Middlewares
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
-// Uso das rotas
-app.use('/produtos', rotasProdutos);
-app.use('/usuarios', rotasUsuarios);
-
-// Conexão com MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/loja_virtual')
-  .then(() => console.log('Conectado ao MongoDB'))
+// Conexão com o MongoDB
+mongoose.connect('mongodb://localhost:27017/seu_banco')
+  .then(() => console.log('MongoDB conectado com sucesso!'))
   .catch((err) => console.error('Erro ao conectar ao MongoDB:', err));
 
-// Inicialização do servidor
+
+// Usa as rotas
+app.use('/api/usuarios', usuariosRoutes);
+app.use('/api/produtos', produtosRoutes);
+
+// Rota simples para teste se servidor está rodando
+app.get('/', (req, res) => {
+  res.send('API rodando! Acesse /api/usuarios ou /api/produtos para testar.');
+});
+
+// Inicia o servidor
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
