@@ -76,6 +76,7 @@ Testes feitos manualmente para checar o funcionamento do projeto.
 ## Instalação e execução
 
 Clone o repositório.
+
 Frontend (localhost:5173):
 - Estamos usando React + Vite + tailwindcss
 ```bash
@@ -84,6 +85,27 @@ npm install
 ```bash
 npm run dev
 ```
+
+Backend (localhost 3000):
+- Estamos usando MongoDB, Axios e Cors
+```bash
+npm install
+```
+```bash
+npm install axios
+```
+```bash
+npm install cors
+```
+```bash
+node index.js
+```
+#Para logar e testar o cliente:
+
+email: teste@email.com
+
+senha: 12345
+
 #Para logar e testar o cliente:
 
 email: teste@email.com
