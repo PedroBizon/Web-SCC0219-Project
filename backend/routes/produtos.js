@@ -35,15 +35,33 @@ router.get('/:id', async (req, res) => {
 
 // Atualizar produto (PUT /produtos/:id)
 router.put('/:id', async (req, res) => {
+  console.log("📦 PUT recebido:", req.body); // ← LOG DE DEBUG
+
   try {
+    const { nome, autor, preco, estoque, descricao, imagem } = req.body;
+
+    // Validação: se imagem for nula ou string vazia, define valor default
+    const imagemFinal = imagem && imagem.trim() !== "" ? imagem : "/imagens/default.jpg";
+
     const produtoAtualizado = await Produto.findByIdAndUpdate(
       req.params.id,
-      req.body,
+      {
+        nome,
+        autor,
+        preco,
+        estoque,
+        descricao,
+        imagem: imagemFinal
+      },
       { new: true }
     );
-    if (!produtoAtualizado) return res.status(404).json({ erro: 'Produto não encontrado' });
+
+    if (!produtoAtualizado)
+      return res.status(404).json({ erro: 'Produto não encontrado' });
+
     res.json(produtoAtualizado);
   } catch (err) {
+    console.error("Erro no PUT:", err.message); // ← LOG DE ERRO
     res.status(400).json({ erro: err.message });
   }
 });

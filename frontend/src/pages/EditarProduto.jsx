@@ -18,21 +18,36 @@ function EditarProduto() {
   const [imagem, setImagem] = useState("");
   const [idProduto, setIdProduto] = useState("");
 
-    useEffect(() => {
-        if (produto) {
-            setTitulo(produto.nome || produto.titulo || "");
-            setAutor(produto.autor || "");
-            setPreco((produto.preco || "").toString().replace("R$", "").trim());
-            setEstoque(
-            produto.estoque?.toString() ??
-            produto.quantidade?.toString() ??
-            ""
-            );
-            setDescricao(produto.descricao || "");
-            setImagem(produto.imagem || "/imagens/default.jpg");
-            setIdProduto(produto._id || produto.id || "");
-        }
-    }, [produto]);
+useEffect(() => {
+  const buscarImagem = async () => {
+    try {
+      const id = produto?._id || produto?.id;
+      const resposta = await axios.get(`http://localhost:3000/api/produtos/${id}`);
+      const dados = resposta.data;
+
+      setImagem(dados.imagem || "/imagens/default.jpg");
+
+      // os outros campos continuam sendo preenchidos pelo `produto` que já veio do VendasEstoque
+      setTitulo(produto.nome || produto.titulo || "");
+      setAutor(produto.autor || "");
+      setPreco((produto.preco || "").toString().replace("R$", "").trim());
+      setEstoque(
+        produto.estoque?.toString() ??
+        produto.quantidade?.toString() ??
+        ""
+      );
+      setDescricao(produto.descricao || "");
+      setIdProduto(id);
+    } catch (error) {
+      console.error("Erro ao buscar imagem do produto:", error);
+      alert("Erro ao buscar imagem.");
+      navigate("/admin");
+    }
+  };
+
+  if (produto) buscarImagem();
+}, [produto, navigate]);
+
 
   const handleSalvar = async () => {
     if (!titulo || !autor || !preco) {

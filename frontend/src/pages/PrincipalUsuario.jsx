@@ -1,12 +1,32 @@
 // src/pages/PrincipalUsuario.jsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from "../components/Navbar/Navbar";
 import SearchBar from "../components/SearchBar/SearchBar";
 import Footer from "../components/Footer/Footer";
 import BookCard from "../components/BookCard/BookCard";
+import axios from "axios";
 
-const PrincipalUsuario = ({ livros, carrinho, setCarrinho, logado }) => {
-  const [filteredBooks, setFilteredBooks] = useState(livros);
+const PrincipalUsuario = ({ carrinho, setCarrinho, logado }) => {
+  const [livros, setLivros] = useState([]);
+  const [filteredBooks, setFilteredBooks] = useState([]);
+
+  useEffect(() => {
+    const carregarLivros = async () => {
+      try {
+        const resposta = await axios.get("http://localhost:3000/api/produtos");
+        const livrosComPrecoFormatado = resposta.data.map((livro) => ({
+          ...livro,
+          preco: Number(livro.preco).toFixed(2) // só número, sem "R$"
+        }));
+        setLivros(livrosComPrecoFormatado);
+        setFilteredBooks(livrosComPrecoFormatado);
+      } catch (error) {
+        console.error("Erro ao carregar produtos do backend:", error);
+      }
+    };
+
+    carregarLivros();
+  }, []);
 
   const handleSearch = (searchTerm) => {
     const lowerSearch = searchTerm.toLowerCase();
@@ -36,7 +56,7 @@ const PrincipalUsuario = ({ livros, carrinho, setCarrinho, logado }) => {
       >
         {filteredBooks.map(livro => (
           <BookCard
-            key={livro.id}
+            key={livro._id}
             livro={livro}
             carrinho={carrinho}
             setCarrinho={setCarrinho}
