@@ -1,7 +1,7 @@
 import './CartItem.css';
 import GerarBotao from '../Botao/Botao';
 
-function CartItem({ book, onRemove }) {
+function CartItem({ book, onRemove, onQuantidadeChange }) {
   return (
     <div className="cart-item">
       <div className="book-image">
@@ -17,11 +17,21 @@ function CartItem({ book, onRemove }) {
         <span className="book-price">
           R$ {parseFloat(book.preco).toFixed(2).replace('.', ',')}
         </span>
+
+        {/* Input para alterar quantidade */}
+        <input
+          type="number"
+          min="1"
+          value={book.quantidade || 1}
+          onChange={(e) => onQuantidadeChange(book._id, parseInt(e.target.value) || 1)}
+          style={{ width: '50px', marginLeft: '10px' }}
+        />
+
         <GerarBotao
           cor={2}
           label="Remover"
           className="px-0 py-0"
-          onClick={() => onRemove(book.id)}
+          onClick={() => onRemove(book._id)}
         />
       </div>
     </div>

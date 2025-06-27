@@ -17,6 +17,15 @@ const Carrinho = ({ carrinho, setCarrinho, logado }) => {
     }
   };
 
+  // Função para alterar quantidade
+  const handleQuantidadeChange = (id, novaQtd) => {
+    if (novaQtd < 1) return; // não permite quantidade menor que 1
+    const novoCarrinho = carrinho.map(item => 
+      item._id === id ? { ...item, quantidade: novaQtd } : item
+    );
+    setCarrinho(novoCarrinho);
+  };
+
   const handleFinalizarCompra = () => {
     if (logado) {
       navigate("/finalizar", { state: { carrinho } });
@@ -48,6 +57,7 @@ const Carrinho = ({ carrinho, setCarrinho, logado }) => {
                   key={item._id}
                   book={item}
                   onRemove={handleRemove}
+                  onQuantidadeChange={handleQuantidadeChange}
                 />
               ))
             )}
