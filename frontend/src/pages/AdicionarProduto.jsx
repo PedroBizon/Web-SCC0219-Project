@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import InputField from "../components/InputField/InputField";
 import GerarBotao from "../components/Botao/Botao";
+import axios from "axios";
 
 function AdicionarProduto({ livros, setLivros }) {
   const navigate = useNavigate();
 
   const [produto, setProduto] = useState({
-    id: "",
     titulo: "",
     autor: "",
     preco: "",
@@ -20,32 +20,45 @@ function AdicionarProduto({ livros, setLivros }) {
     setProduto(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleSalvar = () => {
-    if (!produto.titulo || !produto.preco) {
-      alert("Preencha os campos obrigatórios: Título e Preço.");
+  const handleSalvar = async () => {
+    if (!produto.titulo || !produto.preco || !produto.autor) {
+      alert("Preencha os campos obrigatórios: Título, Autor e Preço.");
       return;
     }
 
-    // Gera o próximo ID baseado no array atual de livros
-    const proximoId =
-      livros.length > 0
-        ? Math.max(...livros.map(p => parseInt(p.id, 10))) + 1
-        : 1;
+    const precoNum = parseFloat(produto.preco);
+    const estoqueNum = parseInt(produto.estoque, 10);
 
-    const novoProduto = {
-      ...produto,
-      // Garante que o ID seja string com zero à esquerda (3 dígitos)
-      id: String(proximoId).padStart(3, "0"),
+    if (isNaN(precoNum) || precoNum < 0) {
+      alert("Preço inválido.");
+      return;
+    }
+
+    if (isNaN(estoqueNum) || estoqueNum < 0) {
+      alert("Estoque inválido.");
+      return;
+    }
+
+    const produtoEnviar = {
       nome: produto.titulo,
-      preco: parseFloat(produto.preco).toFixed(2),
-      estoque: parseInt(produto.estoque, 10),
-      // Você pode ter um campo de upload de imagem ou usar placeholder
-      foto: "/imagens/default.jpg"
+      autor: produto.autor,
+      preco: precoNum,
+      estoque: estoqueNum,
+      descricao: produto.descricao || "",
+      imagem: "/imagens/default.jpg"
     };
 
-    // Atualiza o estado global de livros
-    setLivros([...livros, novoProduto]);
-    navigate("/admin");
+    try {
+      const resposta = await axios.post("http://localhost:3000/api/produtos", produtoEnviar);
+
+      // Atualiza o estado com o produto retornado, que contém o _id gerado pelo MongoDB
+      setLivros([...livros, resposta.data]);
+
+      navigate("/admin");
+    } catch (error) {
+      console.error("Falha ao adicionar produto:", error.response?.data || error.message);
+      alert("Falha ao adicionar o produto. Veja o console para detalhes.");
+    }
   };
 
   return (
