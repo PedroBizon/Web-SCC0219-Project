@@ -53,7 +53,7 @@ const VisualizarProduto = ({ carrinho, setCarrinho, logado }) => {
                         height: '550px',
                         backgroundColor: '#ccc',
                         marginLeft: '5%',
-                        backgroundImage: `url(${livro.foto || ''})`,
+                        backgroundImage: `url(${livro.imagem || '/imagens/default.jpg'})`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center'
                     }}></div>
