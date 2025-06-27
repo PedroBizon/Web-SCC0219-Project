@@ -14,7 +14,13 @@ function FinalizarCompra({ setCarrinho }) {
     const total = subtotal + frete;
 
     const handleFinalizar = () => {
-        setCarrinho([]);  
+        setCarrinho([]);
+        navigate("/compra-sucesso");
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault(); // impede recarregamento da página
+        handleFinalizar();  // só chamado se todos os campos required forem válidos
     };
 
     return (
@@ -43,7 +49,7 @@ function FinalizarCompra({ setCarrinho }) {
 
                 <br />
 
-                <div className="finalizar-container" style={{
+                <form onSubmit={handleSubmit} className="finalizar-container" style={{
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'flex-start',
@@ -54,22 +60,22 @@ function FinalizarCompra({ setCarrinho }) {
                         <h1 style={{ fontWeight: 'bold', fontSize: '20px' }}>Informações de Compra</h1>
                         <br />
 
-                        <InputField placeholder={'Nome Completo'} width="100%" height="40px" />
-                        <InputField placeholder={'Endereço'} width="100%" height="40px" />
-                        <InputField placeholder={'Cidade'} width="100%" height="40px" />
-                        <InputField placeholder={'Estado'} width="100%" height="40px" />
-                        <InputField placeholder={'CEP'} width="100%" height="40px" />
+                        <InputField placeholder={'Nome Completo'} width="100%" height="40px" required={true} />
+                        <InputField placeholder={'Endereço'} width="100%" height="40px" required={true} />
+                        <InputField placeholder={'Cidade'} width="100%" height="40px" required={true} />
+                        <InputField placeholder={'Estado'} width="100%" height="40px" required={true} />
+                        <InputField placeholder={'CEP'} width="100%" height="40px" required={true} />
 
                         <br />
 
                         <h1 style={{ fontWeight: 'bold', fontSize: '20px' }}>Informações de Pagamento</h1>
                         <br />
 
-                        <InputField placeholder={'Número do cartão'} width="100%" height="40px" />
+                        <InputField placeholder={'Número do cartão'} width="100%" height="40px" required={true} />
 
                         <div style={{ display: 'flex', flexDirection: 'row', gap: '20px', flexWrap: 'wrap' }}>
-                            <InputField placeholder={'Nome no cartão'} width="calc(60% - 10px)" height="40px" />
-                            <InputField placeholder={'CVV'} width="calc(40% - 10px)" height="40px" />
+                            <InputField placeholder={'Nome no cartão'} width="calc(60% - 10px)" height="40px" required={true} />
+                            <InputField placeholder={'CVV'} width="calc(40% - 10px)" height="40px" required={true} />
                         </div>
                     </div>
 
@@ -132,10 +138,15 @@ function FinalizarCompra({ setCarrinho }) {
                         </div>
 
                         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                            <GerarBotao cor={0} label="Finalizar Compra" className="px-8 py-4" to="/compra-sucesso" onClick={handleFinalizar} />
+                            <GerarBotao
+                                cor={0}
+                                label="Finalizar Compra"
+                                className="px-8 py-4"
+                                type="submit"
+                            />
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
 
             <style>
@@ -171,7 +182,7 @@ function FinalizarCompra({ setCarrinho }) {
 
             <Footer />
         </>
-    )
+    );
 }
 
 export default FinalizarCompra;
