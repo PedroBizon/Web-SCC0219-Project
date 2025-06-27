@@ -148,7 +148,6 @@ function App() {
             <Login
               setLogado={setLogado}
               setUsuarioLogado={setUsuarioLogado}
-              usuarios={usuarios}
             />
           }
         />

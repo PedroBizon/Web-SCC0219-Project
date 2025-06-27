@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import Navbar      from '../components/Navbar/Navbar';
 import InputField  from '../components/InputField/InputField';
@@ -11,22 +12,34 @@ const Login = (props) => {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
-  const handleLogin = () => {
-    const usuario = props.usuarios.find(u => u.email === email && u.senha === senha);
+const handleLogin = async () => {
+  try {
+    const resposta = await axios.post('http://localhost:3000/api/usuarios/login', {
+      email,
+      senha
+    });
 
-    if (usuario) {
-      props.setLogado(true);
-      props.setUsuarioLogado(usuario);
+    const usuario = resposta.data.usuario;
 
-      if (usuario.admin === true || usuario.admin === 'true') {
-        navigate('/admin');
-      } else {
-        navigate('/');
-      }
+    // marca como logado no app
+    props.setLogado(true);
+    props.setUsuarioLogado(usuario);
+
+    // redireciona conforme tipo
+    if (usuario.tipo === 'admin') {
+      navigate('/admin');
     } else {
-      alert('Email ou senha inválidos');
+      navigate('/');
     }
-  };
+  } catch (err) {
+    if (err.response && err.response.data && err.response.data.erro) {
+      alert(err.response.data.erro); // exemplo: "Senha incorreta"
+    } else {
+      alert('Erro de conexão com o servidor.');
+    }
+  }
+};
+
 
   return (
     <>
