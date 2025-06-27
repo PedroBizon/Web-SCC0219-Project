@@ -49,6 +49,7 @@ router.post('/login', async (req, res) => {
         id: usuario._id,
         nome: usuario.nome,
         email: usuario.email,
+        telefone: usuario.telefone,
         tipo: usuario.tipo
       }
     });

@@ -25,6 +25,9 @@ const handleLogin = async () => {
     props.setLogado(true);
     props.setUsuarioLogado(usuario);
 
+    // Salva no localStorage
+    localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+
     // redireciona conforme tipo
     if (usuario.tipo === 'admin') {
       navigate('/admin');

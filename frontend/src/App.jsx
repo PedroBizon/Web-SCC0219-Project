@@ -18,11 +18,18 @@ import PerfilEditar from './pages/PerfilEditar';
 import CompraSucesso from './pages/CompraSucesso';
 
 function App() {
-  const [logado, setLogado] = useState(false);
-  const [usuarioLogado, setUsuarioLogado] = useState(null);
+
+const [usuarioLogado, setUsuarioLogado] = useState(() => {
+  const armazenado = localStorage.getItem('usuarioLogado');
+  return armazenado ? JSON.parse(armazenado) : null;
+});
+
+const [logado, setLogado] = useState(() => {
+  return localStorage.getItem('usuarioLogado') !== null;
+});
   const [carrinho, setCarrinho] = useState([]);
 
-  // Agora "livros" é um estado dinâmico em vez de um array fixo
+
   const [livros, setLivros] = useState([
     {
       id: "001",
@@ -157,7 +164,7 @@ function App() {
         />
         <Route
           path="/perfil"
-          element={<DadosPerfil usuario={usuarioLogado} logado={logado} />}
+          element={<DadosPerfil usuario={usuarioLogado} setLogado={setLogado} setUsuarioLogado={setUsuarioLogado}/>}
         />
         <Route
           path="/editar-perfil"

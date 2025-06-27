@@ -1,8 +1,18 @@
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import GerarBotao from "../components/Botao/Botao";
 import Footer from "../components/Footer/Footer";
 
-function DadosPerfil({ usuario }) {
+function DadosPerfil({ usuario, setLogado, setUsuarioLogado }) {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('usuarioLogado');
+    if (typeof setLogado === 'function') setLogado(false);
+    if (typeof setUsuarioLogado === 'function') setUsuarioLogado(null);
+    navigate('/login');
+  };
+
   return (
     <>
       <Navbar logado={true} />
@@ -71,7 +81,6 @@ function DadosPerfil({ usuario }) {
           { label: "Nome:",  value: usuario?.nome || "Não informado"  },
           { label: "Email:", value: usuario?.email || "Não informado" },
           { label: "Telefone:", value: usuario?.telefone || "Não informado" },
-          { label: "Endereço:", value: usuario?.endereco || "Não informado" },
         ].map(({ label, value }) => (
           <div
             key={label}
@@ -87,6 +96,15 @@ function DadosPerfil({ usuario }) {
         <GerarBotao cor={0} label="Editar Perfil" className="px-32 py-2" to="/editar-perfil" />
 
         <br /><br />
+
+        <p
+          onClick={handleLogout}
+          className="text-blue-500 hover:underline cursor-pointer text-sm mt-4"
+          style={{ textAlign: "center" }}
+        >
+          Logout
+        </p>
+        
       </div>
 
       <Footer />
