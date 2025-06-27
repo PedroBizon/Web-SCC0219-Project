@@ -6,6 +6,7 @@ const cors = require('cors');
 const usuariosRoutes = require('./routes/usuarios');
 const produtosRoutes = require('./routes/produtos');
 
+
 const app = express();
 
 // Middlewares
