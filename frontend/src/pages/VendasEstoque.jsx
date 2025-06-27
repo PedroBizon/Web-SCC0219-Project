@@ -105,7 +105,7 @@ const VendasEstoque = ({ livros, setLivros }) => {
           {livros.map((livro) => (
             <EstoqueItem
               key={livro._id}
-              id="id"
+              id={livro._id}
               titulo={livro.nome}
               quantidade={livro.estoque}
               preco={`R$ ${Number(livro.preco).toFixed(2)}`}

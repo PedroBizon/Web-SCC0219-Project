@@ -69,6 +69,7 @@ router.post('/admin', async (req, res) => {
     }
 
     const novoAdmin = await Usuario.create({
+      idadmin,
       nome,
       email,
       senha,

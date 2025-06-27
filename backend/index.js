@@ -13,10 +13,11 @@ app.use(cors());
 app.use(express.json());
 
 // Conexão com o MongoDB
-mongoose.connect('mongodb://localhost:27017/seu_banco')
-  .then(() => console.log('MongoDB conectado com sucesso!'))
-  .catch((err) => console.error('Erro ao conectar ao MongoDB:', err));
+const mongoURI = "mongodb+srv://usuario:12345@projetoweb.pyoc1tq.mongodb.net/?retryWrites=true&w=majority&appName=ProjetoWeb";
 
+mongoose.connect(mongoURI)
+  .then(() => console.log('MongoDB Atlas conectado com sucesso!'))
+  .catch(err => console.error('Erro ao conectar ao MongoDB Atlas:', err));
 
 // Usa as rotas
 app.use('/api/usuarios', usuariosRoutes);

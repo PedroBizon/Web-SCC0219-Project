@@ -13,7 +13,8 @@ function AdicionarProduto({ livros, setLivros }) {
     autor: "",
     preco: "",
     estoque: "",
-    descricao: ""
+    descricao: "",
+    imagem: ""
   });
 
   const handleChange = (field, value) => {
@@ -45,13 +46,12 @@ function AdicionarProduto({ livros, setLivros }) {
       preco: precoNum,
       estoque: estoqueNum,
       descricao: produto.descricao || "",
-      imagem: "/imagens/default.jpg"
+      imagem: produto.imagem || "/imagens/default.jpg"
     };
 
     try {
       const resposta = await axios.post("http://localhost:3000/api/produtos", produtoEnviar);
 
-      // Atualiza o estado com o produto retornado, que contém o _id gerado pelo MongoDB
       setLivros([...livros, resposta.data]);
 
       navigate("/admin");
@@ -108,6 +108,14 @@ function AdicionarProduto({ livros, setLivros }) {
               backgroundColor: "#ccc"
             }}
           ></div>
+
+          <InputField
+            placeholder="URL da Imagem"
+            width="100%"
+            height="40px"
+            value={produto.imagem}
+            onChange={e => handleChange("imagem", e.target.value)}
+          />
 
           <InputField
             placeholder="Título"
