@@ -86,12 +86,12 @@ npm run dev
 ```
 #Para logar e testar o cliente:
 
-email: pedro@email.com
+email: teste@email.com
 
-senha: Pedro
+senha: 12345
 
 #Para logar e testar admin:
 
-email: admin@email.com
+email: testeadmin@email.com
 
-senha: admin
+senha: 12345
