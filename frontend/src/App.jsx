@@ -194,7 +194,7 @@ function App() {
         {/* -------------------- OUTRAS ROTAS -------------------- */}
         <Route path="/visualizar" element={<VisualizarProduto carrinho={carrinho} setCarrinho={setCarrinho} logado={logado}/>} />
         <Route path="/finalizar" element={<FinalizarCompra />} />
-        <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/cadastro" element={<Cadastro setLogado={setLogado}/>} />
         <Route path="/administrar-clientes" element={<AdminCliente usuarios={usuarios}/>} />
         <Route path="/registrar-admin" element={<AdminRegistro />} />
         <Route path="/compra-sucesso" element={<CompraSucesso />} />
