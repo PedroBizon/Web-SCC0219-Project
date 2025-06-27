@@ -8,15 +8,13 @@ function PerfilEditar({ usuario, setUsuarioLogado }) {
   const [nome, setNome] = useState(usuario?.nome || "");
   const [email, setEmail] = useState(usuario?.email || "");
   const [telefone, setTelefone] = useState(usuario?.telefone || "");
-  const [endereco, setEndereco] = useState(usuario?.endereco || "");
 
   const handleSalvar = () => {
     const atualizado = {
       ...usuario,
       nome,
       email,
-      telefone,
-      endereco
+      telefone
     };
 
     setUsuarioLogado(atualizado);
@@ -111,16 +109,6 @@ function PerfilEditar({ usuario, setUsuarioLogado }) {
             value={telefone}
             onChange={(e) => setTelefone(e.target.value)}
             placeholder="Digite seu telefone"
-            width="100%"
-          />
-        </div>
-
-        <div className="perfil-row">
-          <InputField
-            label="Endereço:"
-            value={endereco}
-            onChange={(e) => setEndereco(e.target.value)}
-            placeholder="Digite seu endereço"
             width="100%"
           />
         </div>

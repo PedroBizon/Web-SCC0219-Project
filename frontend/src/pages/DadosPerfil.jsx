@@ -91,11 +91,11 @@ function DadosPerfil({ usuario, setLogado, setUsuarioLogado }) {
           </div>
         ))}
 
-        <br /><br />
+        <br />
 
         <GerarBotao cor={0} label="Editar Perfil" className="px-32 py-2" to="/editar-perfil" />
 
-        <br /><br />
+        <br />
 
         <p
           onClick={handleLogout}
