@@ -106,34 +106,7 @@ const [logado, setLogado] = useState(() => {
     }
   ]);
 
-  let usuarios = [
-    {
-      id: "001",
-      nome: "admin",
-      senha: "admin",
-      telefone: "12345",
-      email: "admin@email.com",
-      admin: "true"
-    },
-    {
-      id: "002",
-      nome: "Pedro",
-      endereco: "Rua 2, Bairro 3",
-      telefone: "123456",
-      senha: "Pedro",
-      email: "pedro@email.com",
-      admin: "false"
-    },
-    {
-      id: "003",
-      nome: "Arthur",
-      endereco: "Rua 3, Bairro 2",
-      telefone: "1234567",
-      senha: "Arthur",
-      email: "arthur@email.com",
-      admin: "false"
-    }
-  ];
+const [usuarios, setUsuarios] = useState([]);
 
   return (
     <Router>
@@ -201,7 +174,7 @@ const [logado, setLogado] = useState(() => {
         <Route path="/visualizar" element={<VisualizarProduto carrinho={carrinho} setCarrinho={setCarrinho} logado={logado}/>} />
         <Route path="/finalizar" element={<FinalizarCompra />} />
         <Route path="/cadastro" element={<Cadastro setLogado={setLogado}/>} />
-        <Route path="/administrar-clientes" element={<AdminCliente usuarios={usuarios}/>} />
+        <Route path="/administrar-clientes" element={<AdminCliente usuarios={usuarios} setUsuarios={setUsuarios} />} />
         <Route path="/registrar-admin" element={<AdminRegistro />} />
         <Route path="/compra-sucesso" element={<CompraSucesso />} />
       </Routes>

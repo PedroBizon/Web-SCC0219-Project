@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import ClientHeader from "../components/ClientHeader/ClienteHeader";
@@ -6,16 +8,30 @@ import GerarBotao from "../components/Botao/Botao";
 function AdminCliente({ usuarios, setUsuarios }) {
   const navigate = useNavigate();
 
-  const handleDelete = (id, email) => {
-    // Se for o admin, não permite exclusão
-    if (email === "admin@email.com") {
-      alert("Você não pode excluir o usuário administrador.");
-      return;
-    }
+  // Buscar todos os usuários do backend
+  useEffect(() => {
+    const carregarUsuarios = async () => {
+      try {
+        const resposta = await axios.get("http://localhost:3000/api/usuarios");
+        setUsuarios(resposta.data);
+      } catch (error) {
+        console.error("Erro ao carregar usuários:", error);
+      }
+    };
 
+    carregarUsuarios();
+  }, [setUsuarios]);
+
+  // Excluir usuário com base no _id do MongoDB
+  const handleDelete = async (id, email) => {
     if (window.confirm("Tem certeza que deseja excluir este usuário?")) {
-      const novoArray = usuarios.filter((u) => u.id !== id);
-      setUsuarios(novoArray);
+      try {
+        await axios.delete(`http://localhost:3000/api/usuarios/${id}`);
+        setUsuarios((prevUsuarios) => prevUsuarios.filter((u) => u._id !== id));
+      } catch (error) {
+        console.error("Erro ao excluir usuário:", error);
+        alert("Erro ao excluir o usuário.");
+      }
     }
   };
 
@@ -50,7 +66,7 @@ function AdminCliente({ usuarios, setUsuarios }) {
           margin: "auto",
           borderRadius: "10px",
           padding: "20px",
-          boxShadow: "0 4px 8px rgba(0,0,0,0.1)"
+          boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
         }}
       >
         <h1
@@ -58,7 +74,7 @@ function AdminCliente({ usuarios, setUsuarios }) {
             textAlign: "left",
             fontWeight: "bold",
             fontSize: "25px",
-            color: "#2E86AB"
+            color: "#2E86AB",
           }}
         >
           Perfil Administrativo
@@ -66,34 +82,30 @@ function AdminCliente({ usuarios, setUsuarios }) {
 
         <br />
 
-        {/* Cabeçalho da tabela de clientes */}
         <ClientHeader />
 
-        {/* Lista de clientes dinamicamente */}
         {usuarios.map((user) => (
           <div
-            key={user.id}
+            key={user._id}
             className="cliente-row"
             style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
               padding: "8px 0",
-              borderBottom: "1px solid #eee"
+              borderBottom: "1px solid #eee",
             }}
           >
-            {/* Colunas: id, nome, telefone, email */}
-            <p style={{ flex: 1, textAlign: "left", margin: 0 }}>{user.id}</p>
+            <p style={{ flex: 1, textAlign: "left", margin: 0 }}>id</p>
             <p style={{ flex: 2, textAlign: "left", margin: 0 }}>{user.nome}</p>
             <p style={{ flex: 2, textAlign: "left", margin: 0 }}>{user.telefone}</p>
             <p style={{ flex: 3, textAlign: "left", margin: 0 }}>{user.email}</p>
 
-            {/* Botão "Excluir" (passa id e email) */}
             <GerarBotao
               cor={2}
               label="Excluir"
               className="px-4 py-1"
-              onClick={() => handleDelete(user.id, user.email)}
+              onClick={() => handleDelete(user._id, user.email)}
             />
           </div>
         ))}
