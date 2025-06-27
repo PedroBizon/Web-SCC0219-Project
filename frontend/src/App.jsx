@@ -97,7 +97,7 @@ const [usuarios, setUsuarios] = useState([]);
         />
         {/* -------------------- OUTRAS ROTAS -------------------- */}
         <Route path="/visualizar" element={<VisualizarProduto carrinho={carrinho} setCarrinho={setCarrinho} logado={logado}/>} />
-        <Route path="/finalizar" element={<FinalizarCompra />} />
+        <Route path="/finalizar" element={<FinalizarCompra setCarrinho={setCarrinho} usuario={usuarioLogado} />} />
         <Route path="/cadastro" element={<Cadastro setLogado={setLogado}/>} />
         <Route path="/administrar-clientes" element={<AdminCliente usuarios={usuarios} setUsuarios={setUsuarios} />} />
         <Route path="/registrar-admin" element={<AdminRegistro />} />

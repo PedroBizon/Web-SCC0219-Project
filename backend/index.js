@@ -5,6 +5,7 @@ const cors = require('cors');
 // Rotas
 const usuariosRoutes = require('./routes/usuarios');
 const produtosRoutes = require('./routes/produtos');
+const pedidoRoute = require("./routes/pedido");
 
 
 const app = express();
@@ -23,6 +24,7 @@ mongoose.connect(mongoURI)
 // Usa as rotas
 app.use('/api/usuarios', usuariosRoutes);
 app.use('/api/produtos', produtosRoutes);
+app.use("/api/pedido", pedidoRoute);
 
 // Rota simples para teste se servidor está rodando
 app.get('/', (req, res) => {

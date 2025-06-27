@@ -9,7 +9,7 @@ const Carrinho = ({ carrinho, setCarrinho, logado }) => {
   const navigate = useNavigate();
 
   const handleRemove = (id) => {
-    const index = carrinho.findIndex(item => item.id === id);
+    const index = carrinho.findIndex(item => item._id === id);
     if (index !== -1) {
       const novoCarrinho = [...carrinho];
       novoCarrinho.splice(index, 1);
@@ -26,7 +26,7 @@ const Carrinho = ({ carrinho, setCarrinho, logado }) => {
   };
 
   const total = carrinho
-    .reduce((sum, item) => sum + parseFloat(item.preco), 0)
+    .reduce((sum, item) => sum + parseFloat(item.preco) * (item.quantidade || 1), 0)
     .toFixed(2)
     .replace('.', ',');
 
@@ -45,7 +45,7 @@ const Carrinho = ({ carrinho, setCarrinho, logado }) => {
             ) : (
               carrinho.map(item => (
                 <CartItem
-                  key={item.id}
+                  key={item._id}
                   book={item}
                   onRemove={handleRemove}
                 />
@@ -56,12 +56,12 @@ const Carrinho = ({ carrinho, setCarrinho, logado }) => {
           {carrinho.length > 0 && (
             <div className="flex flex-col items-center space-y-4 mt-6">
               <span className="font-semibold">Total: R$ {total}</span>
-                <GerarBotao
-                  cor={0}
-                  label="Finalizar compra"
-                  className="px-32 py-2"
-                  onClick={handleFinalizarCompra}
-                />
+              <GerarBotao
+                cor={0}
+                label="Finalizar compra"
+                className="px-32 py-2"
+                onClick={handleFinalizarCompra}
+              />
             </div>
           )}
         </div>
