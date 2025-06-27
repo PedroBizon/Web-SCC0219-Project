@@ -101,14 +101,7 @@ function AdicionarProduto({ livros, setLivros }) {
             margin: "20px 0"
           }}
         >
-          <div
-            style={{
-              width: "250px",
-              height: "400px",
-              backgroundColor: "#ccc"
-            }}
-          ></div>
-
+          
           <InputField
             placeholder="URL da Imagem"
             width="100%"

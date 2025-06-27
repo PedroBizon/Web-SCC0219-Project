@@ -63,7 +63,7 @@ const VisualizarProduto = ({ carrinho, setCarrinho, logado }) => {
                         flex: 1,
                         display: 'flex',
                         flexDirection: 'column',
-                        gap: '50px'
+                        gap: '35px'  // espaçamento maior
                     }}>
                         <div className="info-bloco" style={{
                             display: 'flex',
@@ -101,6 +101,20 @@ const VisualizarProduto = ({ carrinho, setCarrinho, logado }) => {
                             <p style={{ color: 'gray' }}>R$ {livro.preco}</p>
                         </div>
 
+                        {/* Aqui o estoque agora */}
+                        <div className="info-bloco" style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            borderBottom: '1px solid #ccc',
+                            paddingBottom: '10px',
+                            marginBottom: '10px'
+                        }}>
+                            <p style={{ color: 'gray', fontWeight: 'bold' }}>Estoque</p>
+                            <p style={{ color: 'gray' }}>{livro.estoque ?? 'Indisponível'}</p>
+                        </div>
+
+                        {/* E aqui a descrição, no fim */}
                         <div className="info-bloco" style={{
                             display: 'flex',
                             flexDirection: 'column',
