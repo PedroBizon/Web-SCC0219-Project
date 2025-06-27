@@ -17,16 +17,16 @@ function BookCard({ livro, carrinho, setCarrinho }) {
 
   return (
     <div className="book-card">
-      <div className="book-image-placeholder" onClick={handleImageClick} style={{ cursor: 'pointer' }}>
-        <img src={livro.foto} alt={livro.nome} />
+      <div
+        className="book-image-placeholder"
+        onClick={handleImageClick}
+        style={{ cursor: 'pointer' }}
+      >
+        <img src={livro.imagem || "/imagens/default.jpg"} alt={livro.nome} />
       </div>
       <h3 className="book-title">{livro.nome}</h3>
       <p className="book-price">R$ {livro.preco}</p>
-      <GerarBotao
-        cor={0}
-        label="Adicionar ao carrinho"
-        onClick={handleAdd}
-      />
+      <GerarBotao cor={0} label="Adicionar ao carrinho" onClick={handleAdd} />
     </div>
   );
 }
