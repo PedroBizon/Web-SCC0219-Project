@@ -60,8 +60,16 @@ Ações disponíveis para clientes:
 
 ## Planos de teste
 
-Para testar o backend, usaremos o software Insomnia, que testa as operações do HTTP.
-Já para testar o frontend, estamos usando o VITE.
+Testes feitos manualmente para checar o funcionamento do projeto.
+ - Teste de login: dados incorretos, faltantes e corretos
+ - Teste CRUD de usuários (pelas telas de admin)
+ - Teste CRUD de produtos (pelas telas de admin)
+ - Teste de criação de conta
+ - Teste de alteração de informações pessoais
+ - Teste de compra de produtos
+ - Teste de finalização de compra
+ - Teste de validação das informações de endereço e pagamento na compra
+ - Teste de atualização das unidades do estoque após uma compra
 
 ---
 
