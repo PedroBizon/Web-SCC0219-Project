@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import Navbar from '../components/Navbar/Navbar';
 import InputField from '../components/InputField/InputField';
 import GerarBotao from '../components/Botao/Botao';
 
-export default function AdminRegistro({ usuarios, setUsuarios }) {
+export default function AdminRegistro() {
   const navigate = useNavigate();
 
   const [nome, setNome] = useState('');
@@ -14,7 +15,7 @@ export default function AdminRegistro({ usuarios, setUsuarios }) {
   const [senha, setSenha] = useState('');
   const [confirmarSenha, setConfirmarSenha] = useState('');
 
-  const handleCadastro = () => {
+  const handleCadastro = async () => {
     if (!nome || !id || !email || !senha || !confirmarSenha) {
       alert("Preencha todos os campos.");
       return;
@@ -25,24 +26,23 @@ export default function AdminRegistro({ usuarios, setUsuarios }) {
       return;
     }
 
-    const existe = usuarios.some(u => u.id === id || u.email === email);
-    if (existe) {
-      alert("Já existe um usuário com esse ID ou email.");
-      return;
-    }
-
-    const novoUsuario = {
+    const novoAdmin = {
       id,
       nome,
       email,
       senha,
-      telefone: '',
-      admin: 'true'
+      telefone: "0000000000",
+      tipo: "admin"
     };
 
-    setUsuarios([...usuarios, novoUsuario]);
-    alert("Administrador registrado com sucesso!");
-    navigate('/administrar-clientes'); // Redireciona para AdminClientes.jsx
+    try {
+      await axios.post('http://localhost:3000/api/usuarios', novoAdmin);
+      alert("Administrador registrado com sucesso!");
+      navigate('/administrar-clientes');
+    } catch (error) {
+      console.error('Erro ao cadastrar administrador:', error.response?.data || error.message);
+      alert(error.response?.data?.erro || "Erro ao cadastrar administrador.");
+    }
   };
 
   return (
