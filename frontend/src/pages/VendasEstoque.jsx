@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import RelatorioHeader from "../components/RelatorioHeader/RelatorioHeader";
@@ -9,17 +11,35 @@ import GerarBotao from "../components/Botao/Botao";
 const VendasEstoque = ({ livros, setLivros }) => {
   const navigate = useNavigate();
 
-  // Função para remover produto do array "livros"
-  const removerProduto = (id) => {
-    const novoArray = livros.filter((livro) => livro.id !== id);
-    setLivros(novoArray);
+  useEffect(() => {
+    const carregarLivros = async () => {
+      try {
+        const resposta = await axios.get("http://localhost:3000/api/produtos");
+        setLivros(resposta.data);
+      } catch (error) {
+        console.error("Erro ao carregar produtos do backend:", error);
+      }
+    };
+
+    carregarLivros();
+  }, [setLivros]);
+
+  const removerProduto = async (_id) => {
+    if (window.confirm("Tem certeza que quer remover este produto do estoque?")) {
+      try {
+        await axios.delete(`http://localhost:3000/api/produtos/${_id}`);
+        setLivros((prev) => prev.filter((livro) => livro._id !== _id));
+      } catch (error) {
+        console.error("Erro ao remover produto:", error);
+        alert("Erro ao remover o produto.");
+      }
+    }
   };
 
   return (
     <>
       <Navbar logado={true} admin={true} />
 
-      {/* somente para dar espaçamento no topo */}
       <br />
       <br />
       <br />
@@ -33,7 +53,7 @@ const VendasEstoque = ({ livros, setLivros }) => {
           margin: "auto",
           borderRadius: "10px",
           padding: "20px",
-          boxShadow: "0 4px 8px rgba(0,0,0,0.1)"
+          boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
         }}
       >
         <h1
@@ -41,7 +61,7 @@ const VendasEstoque = ({ livros, setLivros }) => {
             textAlign: "left",
             fontWeight: "bold",
             fontSize: "25px",
-            color: "#2E86AB"
+            color: "#2E86AB",
           }}
         >
           Painel Administrativo
@@ -49,8 +69,8 @@ const VendasEstoque = ({ livros, setLivros }) => {
 
         <br />
 
+        {/* Relatório ainda estático */}
         <div>
-          {/* -------- RELATÓRIO DE VENDAS (estático, conforme seu exemplo) -------- */}
           <div style={{ borderBottom: "1px solid lightgray", paddingBottom: "5px" }}>
             <p style={{ fontWeight: "bold", textAlign: "left" }}>Relatório de Vendas</p>
           </div>
@@ -76,7 +96,6 @@ const VendasEstoque = ({ livros, setLivros }) => {
         <br />
 
         <div>
-          {/* -------- ESTOQUE DINÂMICO A PARTIR DO STATE "livros" -------- */}
           <div style={{ borderBottom: "1px solid lightgray", paddingBottom: "5px" }}>
             <p style={{ fontWeight: "bold", textAlign: "left" }}>Estoque de Livros</p>
           </div>
@@ -85,24 +104,15 @@ const VendasEstoque = ({ livros, setLivros }) => {
 
           {livros.map((livro) => (
             <EstoqueItem
-              key={livro.id}
-              id={livro.id}
+              key={livro._id}
+              id="id"
               titulo={livro.nome}
               quantidade={livro.estoque}
               preco={`R$ ${Number(livro.preco).toFixed(2)}`}
               autor={livro.autor}
               descricao={livro.descricao}
-              onDelete={() => {
-                if (
-                  window.confirm("Tem certeza que quer remover este produto do estoque?")
-                ) {
-                  removerProduto(livro.id);
-                }
-              }}
-              onEdit={() => {
-                // Navega para /editar, passando o objeto "livro" via state
-                navigate("/editar", { state: { produto: livro } });
-              }}
+              onDelete={() => removerProduto(livro._id)}
+              onEdit={() => navigate("/editar", { state: { produto: livro } })}
             />
           ))}
         </div>
